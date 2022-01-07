@@ -145,6 +145,10 @@ a:hover {
     font-family: "rio_grande";
     src: url('./font/rio_grande/RioGrande.ttf');
 }
+@font-face {
+    font-family: "Athelas-Font";
+    src: url('./font/Athelas-Font/Athelas-Regular.ttf');
+}
 .centered {
     position: absolute;
     top: 50%;
