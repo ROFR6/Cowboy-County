@@ -21,12 +21,12 @@
     display: block;
 }
 .custom-small-left{
-    background-color: black;
+    background-color: #333333;
 }
 .side-by-side{
     overflow: hidden;
     height:430px;
-    background-color: black;
+    background-color: #333333;
 }
 .tiny-logo{
     float:left;
@@ -34,15 +34,17 @@
 }
 .top{
     margin-top: 0px;
-    background-color: black;
-    background: black;
+    background-color: #333333;
+    background: #333333;
     width:100%;
-    height:50px
+    height: 56px;
 }
 .top-container{
     float:left;
     margin-right:10px;
     margin-left: 10px;
+    padding-top: 7px;
+    padding-right: 15px;
 }
 html{
     font-family: sans-serif;
@@ -55,35 +57,38 @@ body{
 h1 {
     margin: 0.67em 0;
     font-size: 18px;
-    font-family: "Rye";
+    font-family: "rio_grande";
     font-weight: 500;
     line-height: 1.1;
-    color: green;
+    color: #B38A58;
+    letter-spacing: 2px;
 }
 h2 {
     margin-left: 10px;
     font-size: 18px;
-    font-family: "Rye";
+    font-family: "rio_grande";
     font-weight: 500;
     line-height: 1.1;
-    color: black;
+    color: #F7F7F2;
+    margin-top: 20px;
+    letter-spacing: 2px;
 }
 h3 {
     margin: 0.67em 0;
     font-size: 72px;
-    font-family: "Rye";
+    font-family: "rio_grande";
     font-weight: 500;
     line-height: 1.1;
-    color: green;
+    color: #B38A58;
     position:fixed;
 }
 h4 {
     margin: 30px;
     font-size: 38px;
-    font-family: "Rye";
+    font-family: "rio_grande";
     font-weight: 500;
     line-height: 1.1;
-    color: green;
+    color: #B38A58;
     margin-top: 30px;
 }
 p{
@@ -91,40 +96,44 @@ p{
 }
 a {
     background: transparent;
-    color: green;
+    color: #F7F7F2;
     text-decoration: none;
+}
+a:hover {
+    color: #467C27;
 }
 .logo{
     margin-top: 0px;
     float:left;
     margin-left: 0px;
     margin-right: 10px;
-    background: green;
+    background: #B38A58;
     width: 50px;
     height: 50px;
+    padding: 3px;
 }
 .wallet{
     float:right;
     margin-top: 0px;
     margin-left: 0px;
     margin-right: 0px;
-    background: green;
-    width: 160px;
-    height: 50px;
+    background: #467C27;
+    width: 190px;
+    height: 56px;
 }
 .footer{
-    background-color: green;
+    background-color: #B38A58;
     height: 40px;
     width:100%;
     font-size: 22px;
     font-weight: 500;
-    color: black;
+    color: #333333;
     text-align: center;
     padding-top: 10px;
 }
 @font-face {
-    font-family: "Rye";
-    src: url('./font/Rye/Rye-Regular.ttf');
+    font-family: "rio_grande";
+    src: url('./font/rio_grande/RioGrande.ttf');
 }
 .centered {
     position: absolute;
@@ -142,15 +151,15 @@ img{
     display:block;
 }
 .button {
-    background-color: green; /* Green */
+    background-color: #467C27; /* #467C27 */
     border: none;
-    color: black;
+    color: #333333;
     padding: 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 38px;
-    font-family: "Rye";
+    font-family: "rio_grande";
     font-weight: 500;
     margin: 4px 2px;
     cursor: pointer;
