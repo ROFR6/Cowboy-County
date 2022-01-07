@@ -5,14 +5,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>About Us</title>
+        <title>Cowboy County</title>
         <link href="../style.css" rel="stylesheet">
     </head>
     <body>
         <!-- Navigation Bar -->
         <div class=top>
             <div class=logo>
-                <h2>CC</h2>
+                <img src="../images/logo_white.png">
             </div>
             <div class=top-container>
                 <h1><a href="../index.html">Home</a></h1>
@@ -31,39 +31,69 @@
             </div>
         </div>
         <!-- /Navigation Bar -->
-        <center>
-            <div class="container">
+        <div class="new-top">
+            <h3>About Us</h3>
+        </div>
+        <div class="about-us-container">
+            <div class="about-us-left">
+                <img src="../images/nft1.jpg">
+            </div>
+            <div class="about-us-right">
 
-                <div>
-                    <div class="custom-title">
-                        <img src="../images/wallpaper.png" width= 100%>
-                        <div class="centered">
-                            <h3>Cowboy County</h3>
-                        </div>
-                    </div>
-                </div>
-          
-                <div class="custom-under-main">
-          
-                  <div class="custom-small-left">
-                    <a href="about-us.html"><img src="../images/tie_logo.gif"></a>
-                    <h3><a href="about-us.html">About Us</a></h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                        <a href="contact.html"><img src="../images/tie_logo.gif"></a>
-                        <h3><a href="contact.html">Contact</a></h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii </p>
-                      </div>
-          
-                  <div class="custom-tall-right">
-                    <img src="../images/roadmap.png">
-                  </div>
-          
-                </div>
-          
-                <hr>
+            </div>
+        </div>
+        <div class="about-us-container">
+            <div class="about-us-left">
+                <img src="../images/nft2.jpg">
+            </div>
+            <div class="about-us-right">
+                
+            </div>
+        </div>
+        <div class="about-us-container">
+            <div class="about-us-left">
+                <img src="../images/nft3.jpg">
+            </div>
+            <div class="about-us-right">
+                
+            </div>
+        </div>
+        <div class="about-us-container">
+            <div class="about-us-left">
+                <img src="../images/nft4.jpg">
+            </div>
+            <div class="about-us-right">
+                
+            </div>
+        </div>
+            
           
                 
-              </div><!-- /.container -->
-        </center>
+          
+                
+              
+        <div class="footer">
+            Cowboy County &copy; 2022
+        </div>
+        
+
     </body>
+    <script type="text/javascript">
+      window.addEventListener('scroll',reveal);
+
+      function reveal(){
+        var reveals = document.querySelectorAll('.reveal');
+        for(var i=0;i<reveals.length;i++){
+          var windowheight=window.innerHeight;
+          var revealtop=reveals[i].getBoundingClientRect().top;
+          var revealpoint=150;
+          if(revealtop<windowheight-revealpoint){
+            reveals[i].classList.add('active');
+          }
+          else{
+            reveals[i].classList.remove('active');
+          }
+        }
+      }
+    </script>
 </html>

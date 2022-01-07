@@ -3,10 +3,10 @@
   }
   
 .custom-under-main .custom-small-left{
-    width: 55%;
+    width: 43.85%;
 }
 .custom-under-main .custom-tall-right {
-    width: 37.85%;
+    width: 49%;
     background-color: #333333;
 }
   
@@ -91,7 +91,6 @@ h3 {
     font-weight: 500;
     line-height: 1.1;
     color: #B38A58;
-    position:fixed;
 }
 h4 {
     margin-top: 30px;
@@ -212,4 +211,11 @@ img{
   .reveal.active{
       transform:translateY(0px);
       opacity: 1;
+  }
+  .new-top{
+      text-align: center;
+  }
+  .mini-space{
+      height:66px;
+      background-color: #333333;
   }
