@@ -84,12 +84,22 @@ h3 {
 }
 h4 {
     margin: 30px;
-    font-size: 38px;
+    font-size: 72px;
     font-family: "rio_grande";
     font-weight: 500;
     line-height: 1.1;
-    color: #B38A58;
+    color: #F7F7F2;
     margin-top: 30px;
+}
+h5{
+    margin-left: 10px;
+    font-size: 34px;
+    font-family: "Athelas-Font";
+    font-weight: 500;
+    line-height: 1.1;
+    color: #F7F7F2;
+    margin-top: 20px;
+    letter-spacing: 2px;
 }
 p{
     font-size: 36px;
