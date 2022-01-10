@@ -1,3 +1,6 @@
+html{
+    background-color: #333333;
+}
 .custom-under-main {
     overflow: hidden;/* Makes this div contain its floats */
     display: flex;
