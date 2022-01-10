@@ -126,6 +126,16 @@ h5{
     margin-top: 0px;
     letter-spacing: 2px;
 }
+h6{
+    margin-left: 10px;
+    font-size: 24px;
+    font-family: "Athelas-Font";
+    font-weight: 500;
+    line-height: 1.1;
+    color: #F7F7F2;
+    margin-top: 0px;
+    letter-spacing: 2px;
+}
 p{
     font-size: 36px;
 }
@@ -228,6 +238,8 @@ img{
   .new-top{
       text-align: center;
       background-color: transparent;
+      margin-top: 60px;
+      margin-bottom: 60px;
   }
   .mini-space{
       height:66px;
