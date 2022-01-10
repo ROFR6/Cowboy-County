@@ -214,8 +214,23 @@ img{
   }
   .new-top{
       text-align: center;
+      background-color: transparent;
   }
   .mini-space{
       height:66px;
       background-color: #333333;
+  }
+  .about-us-container{
+      width: 100%;
+      background-color: #333333;
+      height: auto;
+      float: right;
+  }
+  .about-us-left{
+      width: 30%;
+      float: left;
+  }
+  .about-us-right{
+      width: 65%;
+      float: right;
   }
