@@ -132,7 +132,7 @@ a:hover {
     background: #B38A58;
     width: 52px;
     height: 56px;
-    padding: 3px;
+    padding: 2px;
 }
 .wallet{
     float:right;
@@ -140,7 +140,7 @@ a:hover {
     margin-left: 0px;
     margin-right: 0px;
     background: #467C27;
-    width: 190px;
+    width: 90px;
     height: 56px;
 }
 .footer{
