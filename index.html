@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <title>Cowboy County</title>
-        <link href="./style.css" rel="stylesheet">
-    </head>
-    <body>
-        <!-- Navigation Bar -->
-        <div class=top>
-            <div class=logo>
-                <img src="./images/logo_white.png">
-            </div>
-            <div class=top-container>
-                <h1><a href="./html/about-us.html">About Us</a></h1>
-            </div>
-            <!-- <div class=top-container>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Cowboy County</title>
+  <link href="./style.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Navigation Bar -->
+  <div class=top>
+    <div class=logo>
+      <img src="./images/logo_white.png">
+    </div>
+    <div class=top-container>
+      <h1><a href="./html/about-us.html">About Us</a></h1>
+    </div>
+    <!-- <div class=top-container>
                 <h1><a href="./html/roadmap.html">Roadmap</a></h1>
             </div>
             <div class=top-container>
@@ -26,95 +28,83 @@
             <div class=top-container>
                 <h1><a href="./html/marketplace.html">Marketplace</a></h1>
             </div> -->
-            <div class=wallet>
-                <h2>Connect Wallet</h2>
+    <div class=wallet>
+      <h2>Connect Wallet</h2>
+    </div>
+  </div>
+  <!-- /Navigation Bar -->
+  <center>
+    <div class="container">
+        <img src="./images/wallpaper.png" width=100%>
+      <div class="row">
+        <div class="column">
+          <center>
+            <div class="space"></div>
+            <div class="group reveal">
+              <h4>Howdy!</h4>
+              <h5>We are a Cowboy DAO where you can stake your Cowboy NFT and claim $GOLD to exchange in our market.
+              </h5>
             </div>
-        </div>
-        <!-- /Navigation Bar -->
-        <center>
-            <div class="container">
-
-                <div>
-                    <div class="custom-title">
-                        <img src="./images/wallpaper.png" width= 100%>
-                    </div>
-                </div>
-          
-                <div class="custom-under-main">
-                  <div class="wrapper"></div>
-                  <div class="custom-small-left">
-                    <center>
-                      <div class="space"></div>
-                      <div class="group reveal">
-                        <h4>Howdy!</h4>
-                        <h5>We are a Cowboy DAO where you can stake your Cowboy NFT and claim $GOLD to exchange in our market.</h5>
-                      </div>
-                      <div class="group reveal">
-                        <div class="big-logo-pic"><img src="./images/discord.png" ></div>
-                        <a href="https://discord.gg/C7DGGxc6sc" <button class="button">JOIN US ON DISCORD</button> </a>
-                      </div>
-                      <div class="space"></div>
-                      <div class="group reveal">
-                        <div class="big-logo-pic"><img src="./images/opensea.png"></div>
-                        <button class="button">CHECK US OUT ON OPENSEA (mint coming soon)</button>
-                      </div>
-                      <div class="space"></div>
-                      <div class="group reveal">
-                        <h4>FOLLOW US ON</h4>
-                        <h5>Twitter, Instagram, and TikTok by clicking the icons below.</h5>
-                      </div>
-                      <div class="side-by-side reveal">
-                        <div class="tiny-logo">
-                          <a href="https://twitter.com/county_cowboy"><img src="./images/twitter.png" ></a>
-                        </div>
-                        <div class="tiny-logo">
-                          <a href="https://www.instagram.com/cowboycountynft/"><img src="./images/instagram.png"></a>
-                        </div>
-                        <div class="tiny-logo">
-                          <a href="https://www.tiktok.com/@cowboycounty?lang=en"><img src="./images/tiktok.png"></a>
-                        </div>
-                      </div>
-                      <div class="space"></div>
-                      <div class="group reveal">
-                        <h4>ABOUT US</h4>
-                        <h5>Cowboy County was created by a team of four. Our team members are experts in management, NFT communities, digital development, and graphic design.</h5>
-                      </div>
-                      <div class="mini-space"></div>
-                    </center>
-                  </div>
-          
-                  <div class="custom-tall-right reveal">
-                    <img src="./images/roadmap.png">
-                  </div>
-                </div>
-                </div>
-          
-                
-          
-                
-              </div><!-- /.container -->
-              <div class="footer">
-                Cowboy County &copy; 2022
+            <div class="group reveal">
+              <div class="big-logo-pic"><img src="./images/discord.png"></div>
+              <a href="https://discord.gg/C7DGGxc6sc" <button class="button">JOIN US ON DISCORD</button> </a>
+            </div>
+            <div class="space"></div>
+            <div class="group reveal">
+              <div class="big-logo-pic"><img src="./images/opensea.png"></div>
+              <button class="button">CHECK US OUT ON OPENSEA (mint coming soon)</button>
+            </div>
+            <div class="space"></div>
+            <div class="group reveal">
+              <h4>FOLLOW US ON</h4>
+              <h5>Twitter, Instagram, and TikTok by clicking the icons below.</h5>
+            </div>
+            <div class="side-by-side reveal">
+              <div class="tiny-logo">
+                <a href="https://twitter.com/county_cowboy"><img src="./images/twitter.png"></a>
               </div>
-        </center>
-
-    </body>
-    <script type="text/javascript">
-      window.addEventListener('scroll',reveal);
-
-      function reveal(){
-        var reveals = document.querySelectorAll('.reveal');
-        for(var i=0;i<reveals.length;i++){
-          var windowheight=window.innerHeight;
-          var revealtop=reveals[i].getBoundingClientRect().top;
-          var revealpoint=150;
-          if(revealtop<windowheight-revealpoint){
-            reveals[i].classList.add('active');
-          }
-          else{
-            reveals[i].classList.remove('active');
-          }
-        }
+              <div class="tiny-logo">
+                <a href="https://www.instagram.com/cowboycountynft/"><img src="./images/instagram.png"></a>
+              </div>
+              <div class="tiny-logo">
+                <a href="https://www.tiktok.com/@cowboycounty?lang=en"><img src="./images/tiktok.png"></a>
+              </div>
+            </div>
+            <div class="space"></div>
+            <div class="group reveal">
+              <h4>ABOUT US</h4>
+              <h5>Cowboy County was created by a team of four. Our team members are experts in management, NFT
+                communities, digital development, and graphic design.</h5>
+            </div>
+            <div class="mini-space"></div>
+          </center>
+        </div>
+        <div class="column reveal">
+          <img src="./images/roadmap.png">
+        </div>
+      </div>
+    </div><!-- /.container -->
+    <div class="footer">
+      Cowboy County &copy; 2022
+    </div>
+  </center>
+</body>
+<script type="text/javascript">
+  window.addEventListener('scroll', reveal);
+  function reveal() {
+    var reveals = document.querySelectorAll('.reveal');
+    for (var i = 0; i < reveals.length; i++) {
+      var windowheight = window.innerHeight;
+      var revealtop = reveals[i].getBoundingClientRect().top;
+      var revealpoint = 150;
+      if (revealtop < windowheight - revealpoint) {
+        reveals[i].classList.add('active');
       }
-    </script>
+      else {
+        reveals[i].classList.remove('active');
+      }
+    }
+  }
+</script>
+
 </html>

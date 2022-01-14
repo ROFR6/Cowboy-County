@@ -1,52 +1,29 @@
 html{
     background-color: #333333;
 }
-.custom-under-main {
-    overflow: hidden;/* Makes this div contain its floats */
-    display: flex;
-    position: relative;
+* {
+    box-sizing: border-box;
   }
-  
-.custom-under-main .custom-small-left{
-
-}
-.custom-under-main .custom-tall-right {
-    background-color: #333333;
-}
-  
-.custom-under-main .custom-small-left {
+  .column {
     float: left;
-}
-  
-.custom-under-main .custom-tall-right {
-    float: right;
-    background-color: #333333;
-}
-  
-.custom-under-main label {
-    display: block;
-}
-.custom-tall-right{
-    background-color: #333333;
-    flex: 1;
-    height: 2260px;
-    min-height: 2260px;
-}
-.custom-tall-right img{
-    height: 100%;
-    min-height: 2260px;
-}
-.custom-small-left{
-    background-color: #333333;
-    width: auto;
-    flex: 1;
-    min-width: 300px;
-    height: 2260px;
-}
+    width: 50%;
+  }
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+@media screen and (max-width: 1660px) {
+    .column {
+      width: 100%;
+    }
+  }
 .side-by-side{
     overflow: hidden;
     height:auto;
     background-color: #333333;
+    margin:0;
+    padding-bottom: 0;
 }
 .tiny-logo{
     float:left;
