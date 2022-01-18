@@ -142,6 +142,8 @@ a:hover {
     background: #467C27;
     width: 80px;
     height: 56px;
+    padding-left: 0px;
+    padding-top: 0px;
 }
 .footer{
     background-color: #B38A58;
