@@ -7,6 +7,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <title>Cowboy County</title>
+  <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
   <link href="./style.css" rel="stylesheet">
 </head>
 
@@ -28,7 +29,7 @@
             <div class=top-container>
                 <h1><a href="./html/marketplace.html">Marketplace</a></h1>
             </div> -->
-    <button onclick="wallet()" class="wallet">
+    <button onclick="login()" class="wallet">
       <h2>Start</h2>
     </button>
   </div>
@@ -109,20 +110,32 @@
       }
     }
   }
-  function wallet() {
-    const ethereumButton = document.querySelector('.enableEthereumButton');
-    const showAccount = document.querySelector('.showAccount');
+  const serverUrl = "https://cimugzkotah5.usemoralis.com:2053/server";
+  const appId = "brnLYyndIs1VBTSzDQaDiDQo8o3VC0dPiSptyt2Q";
+  Moralis.start({ serverUrl, appId });
 
-    ethereumButton.addEventListener('click', () => {
-      getAccount();
-    });
-
-    async function getAccount() {
-      const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-      const account = accounts[0];
-      showAccount.innerHTML = account;
+  /* Authentication code */
+  async function login() {
+    let user = Moralis.User.current();
+    if (!user) {
+      user = await Moralis.authenticate({ signingMessage: "Log in using Moralis" })
+        .then(function (user) {
+          console.log("logged in user:", user);
+          console.log(user.get("ethAddress"));
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     }
   }
+
+  async function logOut() {
+    await Moralis.User.logOut();
+    console.log("logged out");
+  }
+
+  document.getElementById("btn-login").onclick = login;
+  document.getElementById("btn-logout").onclick = logOut;
 </script>
 
 </html>
