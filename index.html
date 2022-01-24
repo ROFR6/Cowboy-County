@@ -21,7 +21,7 @@
       <h1><a href="./html/about-us.html">About Us</a></h1>
     </div>
     <div class=top-container onclick="logOut()">
-      <h1><a >Logout</a></h1>
+      <h1><a>Logout</a></h1>
     </div>
     <!-- <div class=top-container>
                 <h1><a href="./html/roadmap.html">Roadmap</a></h1>
@@ -114,6 +114,10 @@
       }
     }
   }
+
+  var today = new Date();
+  var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
   const serverUrl = "https://cimugzkotah5.usemoralis.com:2053/server";
   const appId = "brnLYyndIs1VBTSzDQaDiDQo8o3VC0dPiSptyt2Q";
   Moralis.start({ serverUrl, appId });
@@ -122,7 +126,7 @@
   async function login() {
     let user = Moralis.User.current();
     if (!user) {
-      user = await Moralis.authenticate({ signingMessage: "Log in using Moralis" })
+      user = await Moralis.authenticate({ signingMessage: "Signed in"+ time })
         .then(function (user) {
           console.log("logged in user:", user);
           console.log(user.get("ethAddress"));
