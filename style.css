@@ -47,6 +47,13 @@ html{
     padding-top: 7px;
     padding-right: 15px;
 }
+.top-container-right{
+    float:right;
+    margin-right:10px;
+    margin-left: 10px;
+    padding-top: 7px;
+    padding-right: 15px;
+}
 html{
     font-family: sans-serif;
     -webkit-text-size-adjust: 100%;
