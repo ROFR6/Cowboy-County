@@ -126,7 +126,7 @@
   async function login() {
     let user = Moralis.User.current();
     if (!user) {
-      user = await Moralis.authenticate({ signingMessage: "Signed in"+ time })
+      user = await Moralis.authenticate({ signingMessage: "Signed in at "+ time })
         .then(function (user) {
           console.log("logged in user:", user);
           console.log(user.get("ethAddress"));
