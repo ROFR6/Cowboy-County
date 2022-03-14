@@ -54,7 +54,7 @@
                 {
                 from: accounts[0],
                 to: '0xb39c4cecde7e62ada13519ddd9f70397b0ac9199',
-                value: (v*number).toString(16),
+                value: getValue(),
                 gas: '0x2710',
                 },
             ],
@@ -76,6 +76,15 @@
 
         async function getAccount() {
         accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+        }
+        function getvalue(){
+            if (whitelisted.has(account[0])){
+                v=60000000000000000;
+            }
+            else{
+                v=70000000000000000;
+            }
+            return (number*v).toString(16)
         }
     }
 
