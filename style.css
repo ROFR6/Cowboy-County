@@ -245,3 +245,12 @@ img{
       width: 65%;
       float: right;
   }
+  .enableEthereumButton{
+      background-color: #F7F7F2;
+
+
+  }
+  .sendEthButton{
+    background-color: #F7F7F2;
+    
+  }
