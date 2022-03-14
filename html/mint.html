@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Cowboy County</title>
+    <link href="../style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <div class=top>
+        <div class=logo>
+            <img src="../images/logo_white.png">
+        </div>
+        <div class=top-container>
+            <h1><a href="../index.html">Home</a></h1>
+        </div>
+        <div class=top-container>
+            <h1><a href="./about-us.html">About Us</a></h1>
+        </div>
+        <!-- <div class=top-container>
+            <h1><a href="./roadmap.html">Roadmap</a></h1>
+        </div>
+        <div class=top-container>
+            <h1><a href="./marketplace.html">Marketplace</a></h1>
+        </div> -->
+        <!-- <div class=wallet>
+            <h2>Start</h2>
+        </div> -->
+    </div>
+    <!-- /Navigation Bar -->
+    <div class="new-top">
+        <h3>Mint</h3>
+    </div>
+    <script>
+    const ethereumButton = document.querySelector('.enableEthereumButton');
+    const showAccount = document.querySelector('.showAccount');
+
+    ethereumButton.addEventListener('click', () => {
+        var account = getAccount();
+        var sold=0;
+        var number= prompt("Please enter the number you wish to purchase:", "");
+        const whitelisted = new Set(['0x4D5Ee95e4EE9f86340927758B3CE9C6fb5165b45','0xF728F5103D676a4Efa68abF9668f0d0F2e7E8e74','0x46Ae706E3400014733014a86b3199C6025c389f5','0x3557f5aC9118C0B962C263eE53d48Dc824181254','0x5C1917fcC5B8ECDaF8D25aD6E8BC910F8A09159C','0x394902a01520fd0e208C12e2278E1492D1F91d8a','0x09AFB6Cb9Ba20945D70CE303313F40dCe7636BB5','0x38BB989680C7Ab0f88E0908D89A18c96680008CF','0xde07867bbdcbb0ffc65e185686e9f1214aedde25','0x9b3c87c7ca2c3755d98d295bdcba3367349c4788','0xbbcf5de9bcc72f627014d5b7da65e8d937294df5','0x365e2816F613fC8B1C31e4d2CBF5601aF493dBd4','0x6F136bD96DD1D7216752c6e66d2cf498c9F90218','0x2c71bb9a58B23246505c33F0B938DC00f156E4Ac','0x569e799c6bfa69647301e1d6b2758f61832c8ea8']);
+        var v = 0
+        if (whitelisted.has(account)){
+            v = number * 60000000000000000
+        }
+        else(
+            v = number * 70000000000000000
+        )
+        var vString= v.toString();
+        if (sold==3300){
+            print("sold out")
+        }
+        else{
+            if (whitelisted.has(account)){
+                ethereum
+                    .request({
+                        method: 'eth_sendTransaction',
+                        params: [
+                            {
+                                from: accounts[0],
+                                to: '0xD9Ba2F9e4F3b87ab77e00563bdB6917426ee6657',
+                                value: vString,
+                                gasPrice: '0x09184e72a000',
+                                gas: '0x2710',
+                            },
+                        ],
+                    })
+                    .then((txHash) => console.log(txHash))
+                    .catch((error) => console.error);
+                    sold=sold+number;
+                }
+            else{ethereum
+                    .request({
+                        method: 'eth_sendTransaction',
+                        params: [
+                            {
+                                from: accounts[0],
+                                to: '0xD9Ba2F9e4F3b87ab77e00563bdB6917426ee6657',
+                                value: vString,
+                                gasPrice: '0x09184e72a000',
+                                gas: '0x2710',
+                            },
+                        ],
+                    })
+                    .then((txHash) => console.log(txHash))
+                    .catch((error) => console.error);
+                    sold=sold+number;
+                };
+            }
+         });
+
+    async function getAccount() {
+        const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+        const account = accounts[0];
+        return account;
+    }
+    
+    </script>
+    <button class="enableEthereumButton">Enable Ethereum</button>
+    <h2>Account: <span class="showAccount"></span></h2>
+    
+    
+
+
+
+
+</body>
+</html>
