@@ -77,7 +77,7 @@
         async function getAccount() {
         accounts = await ethereum.request({ method: 'eth_requestAccounts' });
         }
-        function getvalue(){
+        function getValue(){
             if (whitelisted.has(account[0])){
                 v=60000000000000000;
             }
