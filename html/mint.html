@@ -37,6 +37,7 @@
         <h3>Mint</h3>
     </div>
     <script>
+    window.onload=function(){
     var number= window.prompt("Enter number of Cowboys you wish to purchase:");
     const ethereumButton = document.querySelector('.enableEthereumButton');
     const sendEthButton = document.querySelector('.sendEthButton');
@@ -46,23 +47,25 @@
     let accounts = [];
 
     //Sending Ethereum to an address
-    sendEthButton.addEventListener('click', () => {
-    ethereum
-        .request({
-        method: 'eth_sendTransaction',
-        params: [
-            {
-            from: accounts[0],
-            to: '0xD9Ba2F9e4F3b87ab77e00563bdB6917426ee6657',
-            value: v,
-            gasPrice: '0x09184e72a000',
-            gas: '0x2710',
-            },
-        ],
-        })
-        .then((txHash) => console.log(txHash))
-        .catch((error) => console.error);
-    });
+    sendEthButton.addEventListener('click', req());
+    
+    function req(){
+        ethereum
+            .request({
+            method: 'eth_sendTransaction',
+            params: [
+                {
+                from: accounts[0],
+                to: '0xD9Ba2F9e4F3b87ab77e00563bdB6917426ee6657',
+                value: v,
+                gasPrice: '0x09184e72a000',
+                gas: '0x2710',
+                },
+            ],
+            })
+            .then((txHash) => console.log(txHash))
+            .catch((error) => console.error);
+        }
 
     ethereumButton.addEventListener('click', () => {
     getAccount();
@@ -80,6 +83,7 @@
         else{
             v=(number*70000000000000000).toString();
         }
+    }
     }
 
 
