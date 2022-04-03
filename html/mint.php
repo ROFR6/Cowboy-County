@@ -17,10 +17,10 @@
             <img src="../images/logo_white.png">
         </div>
         <div class=top-container>
-            <h1><a href="../index.html">Home</a></h1>
+            <h1><a href="../index.php">Home</a></h1>
         </div>
         <div class=top-container>
-            <h1><a href="./about-us.html">About Us</a></h1>
+            <h1><a href="./about-us.php">About Us</a></h1>
         </div>
         <!-- <div class=top-container>
             <h1><a href="./roadmap.html">Roadmap</a></h1>

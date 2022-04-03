@@ -18,10 +18,10 @@
       <img src="./images/logo_white.png">
     </div>
     <div class=top-container>
-      <h1><a href="./html/about-us.html">About Us</a></h1>
+      <h1><a href="./html/about-us.php">About Us</a></h1>
     </div>
     <div class=top-container>
-      <h1><a href="./html/mint.html">MINT</a></h1>
+      <h1><a href="./html/mint.php">MINT</a></h1>
     </div>
     <!-- <div class=top-container onclick="logOut()">
       <h1><a>Logout</a></h1>
