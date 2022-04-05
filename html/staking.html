@@ -1,15 +1,85 @@
-<?php
-
-    $conn = mysqli_connect('localhost',"ross",'Irish18!Roster9!','cc_tokens');
-    
-    if(!$conn){
-        echo 'Connection error: ' . mysqli_connect_error();
-        
-    }
-
-?>
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Cowboy County</title>
+    <link href="../style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <div class=top>
+        <div class=logo>
+            <img src="../images/logo_white.png">
+        </div>
+        <div class=top-container>
+            <h1><a href="../index.html">Home</a></h1>
+        </div>
+        <div class=top-container>
+            <h1><a href="./about-us.html">About Us</a></h1>
+        </div>
+        <div class=top-container>
+            <h1><a href="./mint.html">Mint</a></h1>
+        </div>
+        <!-- <div class=top-container>
+            <h1><a href="./roadmap.html">Roadmap</a></h1>
+        </div>
+        <div class=top-container>
+            <h1><a href="./marketplace.html">Marketplace</a></h1>
+        </div> -->
+        <!-- <div class=wallet>
+            <h2>Start</h2>
+        </div> -->
+    </div>
+    <!-- /Navigation Bar -->
+    <div class="new-top">
+        <h3>Staking</h3>
+    </div>
+    <script>
+    window.onload=function(){
+    }
     
+    </script>
+    <center>
+    <img src="../images/Web_BG.png" height="100%">
+    <div class="space"></div>
+    <h5>Howdy! In order to stake, follow these directions:</h5>
+    <fieldset>
+        <legend>Contact Form</legend>
+        <form name="frmContact" method="post" action="contact.php">
+        <p>
+        <label for="id">ID </label>
+        <input type="number" name="id" id="id">
+        </p>
+        <p>
+        <label for="owner">Wallet Address</label>
+        <input type="text" name="owner" id="owner">
+        </p>
+        <p>
+        <label for="isStaked">Vault</label>
+        <input type="number" name="isStaked" id="isStaked">
+        </p>
+        <p>
+        <label for="timeStaked">Time Staked</label>
+        <input type="'text" name="timeStaked" id="timeStaked">
+        </p>
+        <p>&nbsp;</p>
+        <p>
+        <input type="submit" name="Submit" id="Submit" value="Submit">
+        </p>
+        </form>
+    </fieldset>
+    
+
+    
+    
+
+
+
+
+</body>
 </html>
