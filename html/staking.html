@@ -25,6 +25,12 @@
       const appId = "mxC5xwV2xmfNGdc9Zoj7HdBidtMrvn7wB4hxS85X";
       Moralis.start({ serverUrl, appId });
       let user = null;
+      const tokenContractAddress = "0xE506c76E9118119BbD2736Eb12B65E8d22511258";
+      const tokenId="";
+      window.onload=function(){
+        var str = window.prompt("Enter the token Id of the one you would like to stake: ");
+        tokenId=str;
+      }
 
       async function login() {
         user = Moralis.User.current();
@@ -86,7 +92,15 @@
             return result;
         }
         function getId(){
-            return 0;
+            let tokenContract = await IERC721.at(tokenContractAddress);
+            let owner = await tokenContract.ownerOf(tokenId);
+            if (owner=user){
+                id=tokenId;
+            }
+            else {
+                id=10000
+            }
+            return id;
         }
 
       document.getElementById("btn-login").onclick = login;
