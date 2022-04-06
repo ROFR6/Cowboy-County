@@ -67,7 +67,9 @@
             const time = getTime();
             const tokens = Moralis.Object.extend("tokens");
             const t = new tokens();
-            console.log(tokenId);
+            if (tokenId=4000){
+                window.alert("Token Id entered does not belong to this Wallet.")
+            }
             t.set("tokenId", tokenId);
             t.set("wallet", wallet);
             t.set("isStaked", vault);
