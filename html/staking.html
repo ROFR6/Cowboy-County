@@ -38,10 +38,10 @@
         await Moralis.User.logOut();
         console.log("logged out");
       }
-      async function stake(x){
+      async function stakeP(){
         const wallet = getWallet();
             const id = getId();
-            const vault = x;
+            const vault = 1;
             const time = getTime();
 
             const tokens = Moralis.Object.extend("tokens");
@@ -51,22 +51,50 @@
             t.set("isStaked", vault);
             t.set("timeStaked", time);
             t.save();
-    }
-    function getWallet(){
-        return "hi";
-    }
-    function getTime(){
-        return 0;
-    }
-    function getId(){
-        return 0;
-    }
+        }
+        async function stakeL(){
+        const wallet = getWallet();
+            const id = getId();
+            const vault = 2;
+            const time = getTime();
+
+            const tokens = Moralis.Object.extend("tokens");
+            const t = new tokens();
+            t.set("id", id);
+            t.set("wallet", wallet);
+            t.set("isStaked", vault);
+            t.set("timeStaked", time);
+            t.save();
+        }
+        async function stakeC(){
+        const wallet = getWallet();
+            const id = getId();
+            const vault = 3;
+            const time = getTime();
+
+            const tokens = Moralis.Object.extend("tokens");
+            const t = new tokens();
+            t.set("id", id);
+            t.set("wallet", wallet);
+            t.set("isStaked", vault);
+            t.set("timeStaked", time);
+            t.save();
+        }
+        function getWallet(){
+            return "hi";
+        }
+        function getTime(){
+            return 0;
+        }
+        function getId(){
+            return 0;
+        }
 
       document.getElementById("btn-login").onclick = login;
       document.getElementById("btn-logout").onclick = logOut;
-      document.getElementById("btn-stakepassive").onclick = stake(1);
-      document.getElementById("btn-stakeland").onclick = stake(2);
-      document.getElementById("btn-stakecolab").onclick = stake(3);
+      document.getElementById("btn-stakepassive").onclick = stakeP();
+      document.getElementById("btn-stakeland").onclick = stakeL();
+      document.getElementById("btn-stakecolab").onclick = stakeC();
     </script>
   </body>
 </html
