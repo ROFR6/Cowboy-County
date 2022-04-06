@@ -20,13 +20,15 @@
     <button id="btn-stakeland">Land</button>
     <button id="btn-stakecolab">Colab</button>
     <script>
+        window.onload=function(){
+            var tokenId = window.prompt("Enter the token Id of the one you would like to stake: ");
+        }
       // connect to Moralis server
       const serverUrl = "https://jsotamk6fp3e.usemoralis.com:2053/server";
       const appId = "mxC5xwV2xmfNGdc9Zoj7HdBidtMrvn7wB4hxS85X";
       Moralis.start({ serverUrl, appId });
       let user = null;
       const tokenContractAddress = "0xE506c76E9118119BbD2736Eb12B65E8d22511258";
-      var tokenId = window.prompt("Enter the token Id of the one you would like to stake: ");
 
       async function login() {
         user = Moralis.User.current();
