@@ -27,12 +27,9 @@
       let user = null;
       const tokenContractAddress = "0xE506c76E9118119BbD2736Eb12B65E8d22511258";
       const tokenId="";
-      window.onload=function(){
-        var str = window.prompt("Enter the token Id of the one you would like to stake: ");
-        tokenId=str;
-      }
 
       async function login() {
+        tokenId = window.prompt("Enter the token Id of the one you would like to stake: ");
         user = Moralis.User.current();
         if (!user) {
           user = await Moralis.authenticate();
