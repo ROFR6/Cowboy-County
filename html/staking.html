@@ -516,7 +516,7 @@
 		"stateMutability": "nonpayable",
 		"type": "function"
 	}
-]
+];
             let t = window.prompt("Enter the token Id of the token you would like to stake.");
             const contract = new web3.eth.Contract(abi_, "0xE506c76E9118119BbD2736Eb12B65E8d22511258")
             let owner = await contract.methods.ownerOf(t).call()
