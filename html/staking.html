@@ -1,54 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Cowboy County</title>
     <link href="../style.css" rel="stylesheet">
+    <!-- Moralis SDK code -->
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
     <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
-</head>
+  </head>
+  <body>
+    <h1>Gas Stats With Moralis</h1>
 
-<body>
-    <!-- Navigation Bar -->
-    <div class=top>
-        <div class=logo>
-            <img src="../images/logo_white.png">
-        </div>
-        <div class=top-container>
-            <h1><a href="../index.html">Home</a></h1>
-        </div>
-        <div class=top-container>
-            <h1><a href="./about-us.html">About Us</a></h1>
-        </div>
-        <div class=top-container>
-            <h1><a href="./mint.html">Mint</a></h1>
-        </div>
-        <!-- <div class=top-container>
-            <h1><a href="./roadmap.html">Roadmap</a></h1>
-        </div>
-        <div class=top-container>
-            <h1><a href="./marketplace.html">Marketplace</a></h1>
-        </div> -->
-        <!-- <div class=wallet>
-            <h2>Start</h2>
-        </div> -->
-    </div>
-    <!-- /Navigation Bar -->
-    <div class="new-top">
-        <h3>Staking</h3>
-    </div>
-    <script type="text/javascript" src="./main.js"></script>
-    <button id="btn-login">login</button>
-    <button id="btn-logout">logout</button>
-    <center>
-    <img src="../images/Web_BG.png" height="100%">
-    <div class="space"></div>
-    <h5>Howdy! In order to stake, follow these directions:</h5>
+    <button id="btn-login">Moralis Login</button>
+    <button id="btn-logout">Logout</button>
+
     <script>
-    
+      // connect to Moralis server
+
+      const serverUrl = "https://jsotamk6fp3e.usemoralis.com:2053/server";
+      const appId = "mxC5xwV2xmfNGdc9Zoj7HdBidtMrvn7wB4hxS85X";
+      Moralis.start({ serverUrl, appId });
+
+      async function login() {
+        let user = Moralis.User.current();
+        if (!user) {
+          user = await Moralis.authenticate();
+        }
+        console.log("logged in user:", user);
+      }
+
+      async function logOut() {
+        await Moralis.User.logOut();
+        console.log("logged out");
+      }
+
+      document.getElementById("btn-login").onclick = login;
+      document.getElementById("btn-logout").onclick = logOut;
     </script>
-</body>
-</html>
+  </body>
+</html
