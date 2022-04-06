@@ -80,12 +80,12 @@
             t.set("timeStaked", time);
             t.save();
         }
-        async function getTime(){
+        function getTime(){
             const d1 = new Date();
             const result = Number(d1.getTime())-1649268534998;
             return result;
         }
-        function getId(){
+        async function getId(){
             let r="10";
             r = await window.prompt("Enter the token Id of the token you would like to stake.");
             console.log(r);
