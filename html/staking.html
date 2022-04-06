@@ -68,39 +68,54 @@
             const tokens = Moralis.Object.extend("tokens");
             const t = new tokens();
             if (tokenId=4000){
-                window.alert("Token Id entered does not belong to this Wallet.")
+                window.alert("Token Id entered does not belong to this Wallet.");
             }
             t.set("tokenId", tokenId);
             t.set("wallet", wallet);
             t.set("isStaked", vault);
             t.set("timeStaked", time);
             t.save();
+            if (tokenId!=4000){
+                window.alert("Token was successfully staked.");
+            }
         }
         async function stakeL() {
             const wallet = user.get("ethAddress");
-            await getId(wallet);
             const vault = 2;
+            await getId(wallet);
             const time = getTime();
             const tokens = Moralis.Object.extend("tokens");
             const t = new tokens();
+            if (tokenId=4000){
+                window.alert("Token Id entered does not belong to this Wallet.");
+            }
             t.set("tokenId", tokenId);
             t.set("wallet", wallet);
             t.set("isStaked", vault);
             t.set("timeStaked", time);
             t.save();
+            if (tokenId!=4000){
+                window.alert("Token was successfully staked.");
+            }
         }
         async function stakeC() {
             const wallet = user.get("ethAddress");
-            await getId(wallet);
             const vault = 3;
+            await getId(wallet);
             const time = getTime();
             const tokens = Moralis.Object.extend("tokens");
             const t = new tokens();
+            if (tokenId=4000){
+                window.alert("Token Id entered does not belong to this Wallet.");
+            }
             t.set("tokenId", tokenId);
             t.set("wallet", wallet);
             t.set("isStaked", vault);
             t.set("timeStaked", time);
             t.save();
+            if (tokenId!=4000){
+                window.alert("Token was successfully staked.");
+            }
         }
         function getTime() {
             const d1 = new Date();
