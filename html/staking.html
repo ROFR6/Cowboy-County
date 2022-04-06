@@ -93,7 +93,6 @@
             };
             const owner = "";
             const ownerOBJ = Moralis.Web3API.token.getTokenIdOwners(options);
-            console.log(ownerOBJ);
             for(const key in ownerOBJ){
                 if (key=="result"){
                     console.log(key);
