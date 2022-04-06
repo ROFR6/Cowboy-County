@@ -43,7 +43,6 @@
         const id = await getId();
         const vault = 1;
         const time = getTime();
-
         const tokens = Moralis.Object.extend("tokens");
         const t = new tokens();
         t.set("id", id);
@@ -57,7 +56,6 @@
             const id = getId();
             const vault = 2;
             const time = getTime();
-
             const tokens = Moralis.Object.extend("tokens");
             const t = new tokens();
             t.set("id", id);
@@ -71,7 +69,6 @@
             const id = getId();
             const vault = 3;
             const time = getTime();
-
             const tokens = Moralis.Object.extend("tokens");
             const t = new tokens();
             t.set("id", id);
@@ -87,9 +84,9 @@
         }
         function getId(){
             let r=10;
-            r = window.prompt("Enter the token Id of the token you would like to stake.");
-            console.log(r);
-            return Number(r);
+            /* r = window.prompt("Enter the token Id of the token you would like to stake.");
+            console.log(r); */
+            return r;
         }
 
       document.getElementById("btn-login").onclick = login;
