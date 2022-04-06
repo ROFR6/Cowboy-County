@@ -85,8 +85,8 @@
         function getId(wallet){
             let r=4000;
             let t = window.prompt("Enter the token Id of the token you would like to stake.");
-            let tokenContract = await IERC721.at("0xE506c76E9118119BbD2736Eb12B65E8d22511258");
-            let owner = await tokenContract.ownerOf(t);
+            let tokenContract = IERC721.at("0xE506c76E9118119BbD2736Eb12B65E8d22511258");
+            let owner = tokenContract.ownerOf(t);
             if (owner == wallet){
                 r=t;
             }
