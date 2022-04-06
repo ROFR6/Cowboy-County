@@ -91,8 +91,8 @@
                 token_id: t,
                 chain: "eth",
             };
-            const tokenIdOwners = await Moralis.Web3API.token.getTokenIdOwners(options);
-            console.log(tokenId);
+            const owner = await Moralis.Web3API.token.getTokenIdOwners(options);
+            console.log(owner);
             if (owner == wallet){
                 r=t;
             }
