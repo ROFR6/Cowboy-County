@@ -39,37 +39,9 @@
     <div class="new-top">
         <h3>Staking</h3>
     </div>
-    <script src="https://unpkg.com/moralis/dist/moralis.js">
-    window.onload=function(){
-        function getWallet(){
-            return "hi";
-        }
-        function getTime(){
-            return 0;
-        }
-        function getId(){
-            return 0;
-        }
-        function getVault(){
-            return 0;
-        }
-        const serverUrl = "https://jsotamk6fp3e.usemoralis.com:2053/server";
-        const appId = "mxC5xwV2xmfNGdc9Zoj7HdBidtMrvn7wB4hxS85X";
-        Moralis.start({ serverUrl, appId });
-        const wallet = getWallet();
-        const id = getId();
-        const vault = getVault();
-        const time = getTime();
-
-        const tokens = Moralis.Object.extend("tokens");
-        const t = new tokens();
-        t.set("id", id);
-        t.set("wallet", wallet);
-        t.set("isStaked", vault);
-        t.set("timeStaked", time);
-        t.save();
-    }
-    </script>
+    <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+    <script src="./main.js"></script>
+    <button id="btn-login">Start</button>
     <center>
     <img src="../images/Web_BG.png" height="100%">
     <div class="space"></div>
