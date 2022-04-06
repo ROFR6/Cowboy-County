@@ -98,7 +98,7 @@
                 if (key=="result"){
                     console.log(key);
                     if (key.length!=0){
-                        let ownerArr=key[0];
+                        let ownerArr=ownerOBJ[key[0]];
                         for (const lil in ownerArr){ //problem
                             if (lil=="owner_of"){
                                 console.log(lil);
