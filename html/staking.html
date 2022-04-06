@@ -40,7 +40,7 @@
       }
       function stakeP(){
         const wallet = user.get("ethAddress");
-        const tokenId = getId();
+        const tokenId = getId(wallet);
         const vault = 1;
         const time = getTime();
         const tokens = Moralis.Object.extend("tokens");
@@ -53,12 +53,12 @@
         }
         function stakeL(){
             const wallet = user.get("ethAddress");
-            const id = getId();
+            const tokenId = getId(wallet);
             const vault = 2;
             const time = getTime();
             const tokens = Moralis.Object.extend("tokens");
             const t = new tokens();
-            t.set("id", id);
+            t.set("tokenId", tokenId);
             t.set("wallet", wallet);
             t.set("isStaked", vault);
             t.set("timeStaked", time);
@@ -66,12 +66,12 @@
         }
         function stakeC(){
             const wallet = user.get("ethAddress");
-            const id = getId();
+            const tokenId = getId(wallet);
             const vault = 3;
             const time = getTime();
             const tokens = Moralis.Object.extend("tokens");
             const t = new tokens();
-            t.set("id", id);
+            t.set("tokenId", tokenId);
             t.set("wallet", wallet);
             t.set("isStaked", vault);
             t.set("timeStaked", time);
@@ -82,9 +82,14 @@
             const result = Number(d1.getTime())-1649268534998;
             return result;
         }
-        function getId(){
-            let r=10;
-            r = window.prompt("Enter the token Id of the token you would like to stake.");
+        function getId(wallet){
+            let r=4000;
+            let t = window.prompt("Enter the token Id of the token you would like to stake.");
+            let tokenContract = await IERC721.at("0xE506c76E9118119BbD2736Eb12B65E8d22511258");
+            let owner = await tokenContract.ownerOf(t);
+            if (owner == wallet){
+                r=t;
+            }
             return Number(r);
         }
 
