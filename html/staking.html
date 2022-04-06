@@ -38,7 +38,7 @@
         await Moralis.User.logOut();
         console.log("logged out");
       }
-      async function stakeP(){
+      function stakeP(){
         const wallet = getWallet();
             const id = getId();
             const vault = 1;
@@ -52,8 +52,8 @@
             t.set("timeStaked", time);
             t.save();
         }
-        async function stakeL(){
-        const wallet = getWallet();
+        function stakeL(){
+            const wallet = getWallet();
             const id = getId();
             const vault = 2;
             const time = getTime();
@@ -66,8 +66,8 @@
             t.set("timeStaked", time);
             t.save();
         }
-        async function stakeC(){
-        const wallet = getWallet();
+        function stakeC(){
+            const wallet = getWallet();
             const id = getId();
             const vault = 3;
             const time = getTime();
