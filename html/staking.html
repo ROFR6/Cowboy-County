@@ -84,9 +84,8 @@
         }
         function getId(){
             let r=10;
-            /* r = window.prompt("Enter the token Id of the token you would like to stake.");
-            console.log(r); */
-            return r;
+            r = window.prompt("Enter the token Id of the token you would like to stake.");
+            return Number(r);
         }
 
       document.getElementById("btn-login").onclick = login;
