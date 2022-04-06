@@ -38,7 +38,21 @@
         console.log("logged out");
       }
       function stakeP(){
-        const wallet = getWallet();
+        const wallet = " ";
+        let user = Moralis.User.current();
+        if (!user) {
+            user = await Moralis.authenticate({
+            signingMessage: "Log in using Moralis",
+            })
+            .then(function (user) {
+                console.log("logged in user:", user);
+                console.log(user.get("ethAddress"));
+                wallet=user.get("ethAddress");
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        }
         const id = getId();
         const vault = 1;
         const time = getTime();
@@ -52,7 +66,21 @@
         t.save();
         }
         function stakeL(){
-            const wallet = getWallet();
+            const wallet = " ";
+            let user = Moralis.User.current();
+            if (!user) {
+                user = await Moralis.authenticate({
+                signingMessage: "Log in using Moralis",
+                })
+                .then(function (user) {
+                    console.log("logged in user:", user);
+                    console.log(user.get("ethAddress"));
+                    wallet=user.get("ethAddress");
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            }
             const id = getId();
             const vault = 2;
             const time = getTime();
@@ -66,7 +94,21 @@
             t.save();
         }
         function stakeC(){
-            const wallet = getWallet();
+            const wallet = " ";
+            let user = Moralis.User.current();
+            if (!user) {
+                user = await Moralis.authenticate({
+                signingMessage: "Log in using Moralis",
+                })
+                .then(function (user) {
+                    console.log("logged in user:", user);
+                    console.log(user.get("ethAddress"));
+                    wallet=user.get("ethAddress");
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            }
             const id = getId();
             const vault = 3;
             const time = getTime();
@@ -78,9 +120,6 @@
             t.set("isStaked", vault);
             t.set("timeStaked", time);
             t.save();
-        }
-        function getWallet(){
-            return "hi";
         }
         function getTime(){
             return 0;
