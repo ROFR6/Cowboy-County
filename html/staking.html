@@ -80,7 +80,7 @@
             t.set("timeStaked", time);
             t.save();
         }
-        function getTime(){
+        async function getTime(){
             const d1 = new Date();
             const result = Number(d1.getTime())-1649268534998;
             return result;
