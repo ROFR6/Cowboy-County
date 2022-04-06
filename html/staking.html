@@ -82,16 +82,70 @@
             const result = Number(d1.getTime())-1649268534998;
             return result;
         }
-        function getId(wallet){
+        async function getId(wallet){
             let r=4000;
             let t = window.prompt("Enter the token Id of the token you would like to stake.");
-            let tokenContract = IERC721.at("0xE506c76E9118119BbD2736Eb12B65E8d22511258");
-            let owner = tokenContract.ownerOf(t);
-            if (owner == wallet){
+            const cc = new web3.eth.Contract([
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "previousOwner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "OwnershipTransferred",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "renounceOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
+], 0xE506c76E9118119BbD2736Eb12B65E8d22511258);
+            const tokenOwner = cc.methods.ownerOf(tokenId).call();
+            if (tokenOwner == wallet){
                 r=t;
             }
             return Number(r);
         }
+
 
       document.getElementById("btn-login").onclick = login;
       document.getElementById("btn-logout").onclick = logOut;
