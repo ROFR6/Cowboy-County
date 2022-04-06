@@ -12,10 +12,10 @@
     <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
   </head>
   <body>
-    <h1>Gas Stats With Moralis</h1>
+    <h3>Staking</h3>
 
-    <button id="btn-login">Moralis Login</button>
-    <button id="btn-logout">Logout</button>
+    <button id="btn-login">Step 2</button>
+    <button id="btn-logout">Step 1</button>
     <button id="btn-stakepassive">Passive</button>
     <button id="btn-stakeland">Land</button>
     <button id="btn-stakecolab">Colab</button>
@@ -24,9 +24,10 @@
       const serverUrl = "https://jsotamk6fp3e.usemoralis.com:2053/server";
       const appId = "mxC5xwV2xmfNGdc9Zoj7HdBidtMrvn7wB4hxS85X";
       Moralis.start({ serverUrl, appId });
+      let user = null;
 
       async function login() {
-        let user = Moralis.User.current();
+        user = Moralis.User.current();
         if (!user) {
           user = await Moralis.authenticate();
         }
@@ -38,21 +39,7 @@
         console.log("logged out");
       }
       function stakeP(){
-        const wallet = " ";
-        let user = Moralis.User.current();
-        if (!user) {
-            user = await Moralis.authenticate({
-            signingMessage: "Log in using Moralis",
-            })
-            .then(function (user) {
-                console.log("logged in user:", user);
-                console.log(user.get("ethAddress"));
-                wallet=user.get("ethAddress");
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-        }
+        const wallet = user.get("ethAddress");
         const id = getId();
         const vault = 1;
         const time = getTime();
@@ -66,21 +53,7 @@
         t.save();
         }
         function stakeL(){
-            const wallet = " ";
-            let user = Moralis.User.current();
-            if (!user) {
-                user = await Moralis.authenticate({
-                signingMessage: "Log in using Moralis",
-                })
-                .then(function (user) {
-                    console.log("logged in user:", user);
-                    console.log(user.get("ethAddress"));
-                    wallet=user.get("ethAddress");
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-            }
+            const wallet = user.get("ethAddress");
             const id = getId();
             const vault = 2;
             const time = getTime();
@@ -94,21 +67,7 @@
             t.save();
         }
         function stakeC(){
-            const wallet = " ";
-            let user = Moralis.User.current();
-            if (!user) {
-                user = await Moralis.authenticate({
-                signingMessage: "Log in using Moralis",
-                })
-                .then(function (user) {
-                    console.log("logged in user:", user);
-                    console.log(user.get("ethAddress"));
-                    wallet=user.get("ethAddress");
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-            }
+            const wallet = user.get("ethAddress");
             const id = getId();
             const vault = 3;
             const time = getTime();
