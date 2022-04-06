@@ -101,12 +101,12 @@
                     console.log(x);
                     console.log(ownerOBJ[x]);
                     if (key.length!=0){
-                        let ownerArr=key[0];
-                        for (const lil in ownerOBJ[ownerArr]){ //problem
+                        let y = ownerOBJ[x];
+                        for (const lil in y){ //problem
                             if (lil=="owner_of"){
                                 console.log(lil);
-                                console.log(ownerArr[lil]);
-                                owner=ownerArr[lil];
+                                console.log(y[lil]);
+                                owner=y[lil];
                             }
                         }
                     }
