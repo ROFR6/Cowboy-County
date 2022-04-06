@@ -46,10 +46,7 @@
         const time = getTime();
         const tokens = Moralis.Object.extend("tokens");
         const t = new tokens();
-        console.log(wallet);
         console.log(tokenId);
-        console.log(time);
-        console.log(vault);
         t.set("tokenId", tokenId);
         t.set("wallet", wallet);
         t.set("isStaked", vault);
@@ -101,15 +98,11 @@
             console.log(ownerOBJ);
             for(const key in ownerOBJ){
                 if (key=="result"){
-                    console.log(key);
                     let x = ownerOBJ[key];
-                    console.log(x);
                     if (x.length!=0){
                         let y = x[0];
                         for (const lil in y){ //problem
                             if (lil=="owner_of"){
-                                console.log(lil);
-                                console.log(y[lil]);
                                 str=JSON.stringify(y[lil]);
                                 console.log(str);
                                 owner=str;
@@ -122,8 +115,11 @@
                 }
             }
             console.log(owner);
+            console.log(JSON.stringify(owner));
+            console.log(JSON.stringify(wallet));
             if (JSON.stringify(owner) == JSON.stringify(wallet)){
                 r=Number(t);
+                console.log(r);
             }
             tokenId=r;
             //return Number(r);
