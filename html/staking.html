@@ -10,7 +10,7 @@
     <link href="../style.css" rel="stylesheet">
 </head>
 <!-- Moralis SDK code -->
-<script src="https://unpkg.com/moralis/dist/moralis.js">
+<script>
     var number = window.prompt("Enter the number you wish to buy: ");
     const serverUrl = "https://jsotamk6fp3e.usemoralis.com:2053/server";
     const appId = "mxC5xwV2xmfNGdc9Zoj7HdBidtMrvn7wB4hxS85X";
@@ -92,6 +92,8 @@
     document.getElementById("btn-stakeland").addEventListener("click", stakeL);
     document.getElementById("btn-stakecolab").addEventListener("click", stakeC);
 </script>
+<script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+<script src="https://unpkg.com/moralis/dist/moralis.js"></script>
 
 <body>
     <h3>Staking</h3>
