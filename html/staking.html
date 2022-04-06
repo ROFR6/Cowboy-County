@@ -38,9 +38,9 @@
         await Moralis.User.logOut();
         console.log("logged out");
       }
-      function stakeP(){
+      async function stakeP(){
         const wallet = user.get("ethAddress");
-        const id = getId();
+        const id = await getId();
         const vault = 1;
         const time = getTime();
 
