@@ -45,6 +45,10 @@
         const time = getTime();
         const tokens = Moralis.Object.extend("tokens");
         const t = new tokens();
+        console.log(wallet);
+        console.log(tokenId);
+        console.log(time);
+        console.log(vault);
         t.set("tokenId", tokenId);
         t.set("wallet", wallet);
         t.set("isStaked", vault);
