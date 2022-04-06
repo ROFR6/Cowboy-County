@@ -99,8 +99,8 @@
                     console.log(key);
                     let x = ownerOBJ[key];
                     console.log(x);
-                    if (key.length!=0){
-                        let y = ownerOBJ[x];
+                    if (x.length!=0){
+                        let y = x[0];
                         for (const lil in y){ //problem
                             if (lil=="owner_of"){
                                 console.log(lil);
