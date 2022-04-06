@@ -68,7 +68,7 @@
         }
         function stakeC(){
             const wallet = user.get("ethAddress");
-            const id = getId();
+            const id = await getId();
             const vault = 3;
             const time = getTime();
 
@@ -85,9 +85,10 @@
             const result = Number(d1.getTime())-1649268534998;
             return result;
         }
-        async function getId(){
-            let r="10"
+        function getId(){
+            let r="10";
             r = await window.prompt("Enter the token Id of the token you would like to stake.");
+            console.log(r);
             return Number(r);
         }
 
