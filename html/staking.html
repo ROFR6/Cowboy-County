@@ -86,8 +86,9 @@
             return result;
         }
         async function getId(){
-            let result = await window.prompt("Enter the token Id of the token you would like to stake.");
-            return Number(result);
+            let r="10"
+            r = await window.prompt("Enter the token Id of the token you would like to stake.");
+            return Number(r);
         }
 
       document.getElementById("btn-login").onclick = login;
