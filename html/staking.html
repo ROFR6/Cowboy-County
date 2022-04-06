@@ -91,7 +91,9 @@
                 token_id: t,
                 chain: "matic",
             };
+            const owner = "";
             const ownerOBJ = await Moralis.Web3API.token.getTokenIdOwners(options);
+            console.log(ownerOBJ);
             for(const key in ownerOBJ){
                 if (key=="result"){
                     console.log(key);
