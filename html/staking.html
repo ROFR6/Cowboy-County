@@ -25,6 +25,7 @@
       const appId = "mxC5xwV2xmfNGdc9Zoj7HdBidtMrvn7wB4hxS85X";
       Moralis.start({ serverUrl, appId });
       let user = null;
+      var tokenId=4000;
 
       async function login() {
         user = Moralis.User.current();
@@ -40,7 +41,7 @@
       }
       function stakeP(){
         const wallet = user.get("ethAddress");
-        const tokenId = getId(wallet);
+        tokenId = getId(wallet);
         const vault = 1;
         const time = getTime();
         const tokens = Moralis.Object.extend("tokens");
@@ -57,7 +58,7 @@
         }
         function stakeL(){
             const wallet = user.get("ethAddress");
-            const tokenId = getId(wallet);
+            tokenId = getId(wallet);
             const vault = 2;
             const time = getTime();
             const tokens = Moralis.Object.extend("tokens");
@@ -70,7 +71,7 @@
         }
         function stakeC(){
             const wallet = user.get("ethAddress");
-            const tokenId = getId(wallet);
+            tokenId = getId(wallet);
             const vault = 3;
             const time = getTime();
             const tokens = Moralis.Object.extend("tokens");
@@ -124,7 +125,8 @@
             if (owner == wallet){
                 r=Number(t);
             }
-            return Number(r);
+            tokenId=r;
+            //return Number(r);
         }
 
 
