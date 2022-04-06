@@ -8,6 +8,11 @@
     <title>Cowboy County</title>
     <link href="../style.css" rel="stylesheet">
     <!-- Moralis SDK code -->
+    <script>
+        window.onload=function(){
+            var tokenId = window.prompt("Enter the token Id of the one you would like to stake: ");
+        }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
     <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
   </head>
@@ -20,9 +25,6 @@
     <button id="btn-stakeland">Land</button>
     <button id="btn-stakecolab">Colab</button>
     <script>
-        window.onload=function(){
-            var tokenId = window.prompt("Enter the token Id of the one you would like to stake: ");
-        }
       // connect to Moralis server
       const serverUrl = "https://jsotamk6fp3e.usemoralis.com:2053/server";
       const appId = "mxC5xwV2xmfNGdc9Zoj7HdBidtMrvn7wB4hxS85X";
