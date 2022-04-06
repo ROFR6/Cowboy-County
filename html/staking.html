@@ -91,7 +91,25 @@
                 token_id: t,
                 chain: "matic",
             };
-            const owner = await Moralis.Web3API.token.getTokenIdOwners(options);
+            const ownerOBJ = await Moralis.Web3API.token.getTokenIdOwners(options);
+            for(const key in ownerOBJ){
+                if (key=="result"){
+                    consule.log(key);
+                    if (key.length!=0){
+                        let ownerArr=key[0];
+                        for (const lil in ownerArr){
+                            console.log(ownerArr);
+                            if (lil=="owner_of"){
+                                owner=lil;
+                                console.log(lil)
+                            }
+                        }
+                    }
+                    else {
+                        owner="none"
+                    }
+                }
+            }
             console.log(owner);
             if (owner == wallet){
                 r=t;
