@@ -99,11 +99,11 @@
                     console.log(key);
                     if (key.length!=0){
                         let ownerArr=key[0];
-                        for (const lil in ownerArr){
-                            console.log(ownerArr);
+                        for (const lil in ownerArr){ //problem
                             if (lil=="owner_of"){
-                                owner=lil;
-                                console.log(lil)
+                                console.log(lil);
+                                console.log(ownerArr[lil]);
+                                owner=ownerArr[lil];
                             }
                         }
                     }
