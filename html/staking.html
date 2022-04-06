@@ -1,108 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Cowboy County</title>
     <link href="../style.css" rel="stylesheet">
-</head>
-<!-- Moralis SDK code -->
-<script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
-<script src="https://unpkg.com/moralis/dist/moralis.js">
-    const serverUrl = "https://jsotamk6fp3e.usemoralis.com:2053/server";
-    const appId = "mxC5xwV2xmfNGdc9Zoj7HdBidtMrvn7wB4hxS85X";
-    Moralis.start({ serverUrl, appId });
-    let user = null;
-    const tokenContractAddress = "0xE506c76E9118119BbD2736Eb12B65E8d22511258";
-    const tokenId = "";
-    async function login() {
-        user = Moralis.User.current();
-        if (!user) {
-            user = await Moralis.authenticate({
-            signingMessage: "Log in using Moralis",
-            })
-            .then(function (user) {
-                console.log("logged in user:", user);
-                console.log(user.get("ethAddress"));
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-        }
-    }
-
-    async function logOut() {
-        await Moralis.User.logOut();
-        console.log("logged out");
-    }
-    function stakeP() {
-        const wallet = user.get("ethAddress");
-        const id = getId();
-        const vault = 1;
-        const time = getTime();
-        const tokens = Moralis.Object.extend("tokens");
-        const t = new tokens();
-        t.set("id", id);
-        t.set("wallet", wallet);
-        t.set("isStaked", vault);
-        t.set("timeStaked", time)
-        t.save();
-    }
-    function stakeL() {
-        const wallet = user.get("ethAddress");
-        const id = getId();
-        const vault = 2;
-        const time = getTime();
-        const tokens = Moralis.Object.extend("tokens");
-        const t = new tokens();
-        t.set("id", id);
-        t.set("wallet", wallet);
-        t.set("isStaked", vault);
-        t.set("timeStaked", time);
-        t.save();
-    }
-    function stakeC() {
-        const wallet = user.get("ethAddress");
-        const id = getId();
-        const vault = 3;
-        const time = getTime()
-        const tokens = Moralis.Object.extend("tokens");
-        const t = new tokens();
-        t.set("id", id);
-        t.set("wallet", wallet);
-        t.set("isStaked", vault);
-        t.set("timeStaked", time);
-        t.save();
-    }
-    function getTime() {
-        const d1 = new Date();
-        const result = Number(d1.getTime()) - 1649268534998;
-        return result;
-    }
-    function getId() {
-        let tokenContract = IERC721.at(tokenContractAddress);
-        let owner = tokenContract.ownerOf(tokenId);
-        if (owner = user) {
-            id = tokenId;
-        }
-        else {
-            id = 10000
-        }
-        return id;
-    }
-
-    document.getElementById("btn-login").onclick = login;
-    document.getElementById("btn-logout").onclick = logOut;
-    document.getElementById("btn-stakepassive").addEventListener("click", stakeP);
-    document.getElementById("btn-stakeland").addEventListener("click", stakeL);
-    document.getElementById("btn-stakecolab").addEventListener("click", stakeC);
-</script>
-
-
-<body>
+    <!-- Moralis SDK code -->
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+  </head>
+  <body>
     <h3>Staking</h3>
 
     <button id="btn-login">Step 2</button>
@@ -110,6 +19,81 @@
     <button id="btn-stakepassive">Passive</button>
     <button id="btn-stakeland">Land</button>
     <button id="btn-stakecolab">Colab</button>
-</body>
+    <script>
+      // connect to Moralis server
+      const serverUrl = "https://jsotamk6fp3e.usemoralis.com:2053/server";
+      const appId = "mxC5xwV2xmfNGdc9Zoj7HdBidtMrvn7wB4hxS85X";
+      Moralis.start({ serverUrl, appId });
+      let user = null;
 
+      async function login() {
+        user = Moralis.User.current();
+        if (!user) {
+          user = await Moralis.authenticate();
+        }
+        console.log("logged in user:", user);
+      }
+
+      async function logOut() {
+        await Moralis.User.logOut();
+        console.log("logged out");
+      }
+      function stakeP(){
+        const wallet = user.get("ethAddress");
+        const id = getId();
+        const vault = 1;
+        const time = getTime();
+
+        const tokens = Moralis.Object.extend("tokens");
+        const t = new tokens();
+        t.set("id", id);
+        t.set("wallet", wallet);
+        t.set("isStaked", vault);
+        t.set("timeStaked", time);
+        t.save();
+        }
+        function stakeL(){
+            const wallet = user.get("ethAddress");
+            const id = getId();
+            const vault = 2;
+            const time = getTime();
+
+            const tokens = Moralis.Object.extend("tokens");
+            const t = new tokens();
+            t.set("id", id);
+            t.set("wallet", wallet);
+            t.set("isStaked", vault);
+            t.set("timeStaked", time);
+            t.save();
+        }
+        function stakeC(){
+            const wallet = user.get("ethAddress");
+            const id = getId();
+            const vault = 3;
+            const time = getTime();
+
+            const tokens = Moralis.Object.extend("tokens");
+            const t = new tokens();
+            t.set("id", id);
+            t.set("wallet", wallet);
+            t.set("isStaked", vault);
+            t.set("timeStaked", time);
+            t.save();
+        }
+        function getTime(){
+            const d1 = new Date();
+            const result = Number(d1.getTime())-1649268534998;
+            return result;
+        }
+        function getId(){
+            return 0;
+        }
+
+      document.getElementById("btn-login").onclick = login;
+      document.getElementById("btn-logout").onclick = logOut;
+      document.getElementById("btn-stakepassive").addEventListener("click", stakeP);
+      document.getElementById("btn-stakeland").addEventListener("click", stakeL);
+      document.getElementById("btn-stakecolab").addEventListener("click", stakeC);
+    </script>
+  </body>
 </html
