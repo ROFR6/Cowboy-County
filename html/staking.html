@@ -82,6 +82,7 @@
             const wallet = user.get("ethAddress");
             const vault = 1;
             await getId(wallet);
+            console.log(tokenId);
             const time = getTime();
             const tokens = Moralis.Object.extend("tokens");
             const t = new tokens();
@@ -102,6 +103,7 @@
             const wallet = user.get("ethAddress");
             const vault = 2;
             await getId(wallet);
+            console.log(tokenId);
             const time = getTime();
             const tokens = Moralis.Object.extend("tokens");
             const t = new tokens();
@@ -121,6 +123,7 @@
             const wallet = user.get("ethAddress");
             const vault = 3;
             await getId(wallet);
+            console.log(tokenId);
             const time = getTime();
             const tokens = Moralis.Object.extend("tokens");
             const t = new tokens();
