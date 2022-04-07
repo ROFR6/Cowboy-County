@@ -82,20 +82,21 @@
             const wallet = user.get("ethAddress");
             const vault = 1;
             await getId(wallet);
+            temp=tokenId;
             console.log(tokenId);
             const time = getTime();
             const tokens = Moralis.Object.extend("tokens");
             const t = new tokens();
-            if (tokenId = 4000) {
+            if (temp = 4000) {
                 window.alert("Token Id entered does not belong to this Wallet.");
             }
-            t.set("tokenId", tokenId);
+            t.set("tokenId", temp);
             t.set("wallet", wallet);
             t.set("isStaked", vault);
             t.set("timeStaked", time);
             t.save();
             console.log(tokenId);
-            if (tokenId != 4000) {
+            if (temp != 4000) {
                 window.alert("Token was successfully staked.");
             }
         }
