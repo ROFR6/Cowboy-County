@@ -93,6 +93,7 @@
             t.set("isStaked", vault);
             t.set("timeStaked", time);
             t.save();
+            console.log(tokenId);
             if (tokenId != 4000) {
                 window.alert("Token was successfully staked.");
             }
@@ -168,14 +169,10 @@
                     }
                 }
             }
-            console.log(owner);
-            console.log(JSON.stringify(wallet));
             if (owner == JSON.stringify(wallet)) {
                 r = Number(t);
-                console.log(r);
             }
             tokenId = r;
-            console.log(tokenId);
             //return Number(r);
         }
 
