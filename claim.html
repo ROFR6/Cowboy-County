@@ -139,10 +139,10 @@
             tokenq.equalTo("tokenId", tokenId);
             const timeStakedOBJ = await tokenq.find();
             var timeStaked = objectToTime(timeStakedOBJ);
-            if (timeStaked < (86400000*21)) {
-                timeStaked = timeStaked - (86400000*14);
-            }
             var actualtimestaked = result - timeStaked;
+            if (timeStaked < (1953542493)) {
+                actualtimestaked = actualtimestaked + (86400000*14);
+            }
             var actualtimedays = actualtimestaked/86400000
             console.log(actualtimedays);
             console.log(timeStaked);
