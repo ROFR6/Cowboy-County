@@ -168,7 +168,7 @@
             const walletq = new Moralis.Query(wallets);
             walletq.limit(1);
             walletq.equalTo("wallet",wallet);
-            const walletOBJ = await tokenq.find();
+            const walletOBJ = await walletq.find();
             const previousL= objectToL(walletOBJ);
             return previousL;
         }
@@ -177,7 +177,7 @@
             const walletq = new Moralis.Query(wallets);
             walletq.limit(1);
             walletq.equalTo("wallet",wallet);
-            const walletOBJ = await tokenq.find();
+            const walletOBJ = await walletq.find();
             const previousC= objectToC(walletOBJ);
             return previousC;
         }
@@ -186,7 +186,7 @@
             const walletq = new Moralis.Query(wallets);
             walletq.limit(1);
             walletq.equalTo("wallet",wallet);
-            const walletOBJ = await tokenq.find();
+            const walletOBJ = await walletq.find();
             const previousP= objectToP(walletOBJ);
             return previousP;
         }
