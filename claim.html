@@ -116,6 +116,7 @@
                 t.set("timeStaked", time);
                 t.save();
                 const w = new wallets();
+                console.log(vaultStaked);
                 if (vaultStaked != 0) {
                     w.set("wallet", wallet);
                     w.set("passive", moneyPreviousPassive);
