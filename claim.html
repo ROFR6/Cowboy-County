@@ -184,7 +184,7 @@
         }
         function objectToTime(timeStakedOBJ) {
             var timeStaked = 0;
-            if (timeStakedOBJ == null) {
+            if (timeStakedOBJ.length == 0) {
                 return 0;
             }
             const x = timeStakedOBJ[timeStakedOBJ.length - 1].attributes;
@@ -197,7 +197,7 @@
         }
         function objectToVault(vaultOBJ) {
             var vaultStaked = 0;
-            if (vaultOBJ == null) {
+            if (vaultOBJ.length == 0) {
                 return 0;
             }
             const x = vaultOBJ[vaultOBJ.length-1].attributes;
@@ -211,7 +211,7 @@
         function objectToP(walletOBJ) {
             var passive = 0;
             const x = walletOBJ[walletOBJ.length - 1].attributes;
-            if (walletOBJ == null) {
+            if (walletOBJ.length == 0) {
                 return 0;
             }
             for (const key in x) {
@@ -223,10 +223,9 @@
         }
         function objectToL(walletOBJ) {
             var land = 0;
-            if (walletOBJ == null) {
+            if (walletOBJ.length == 0) {
                 return 0;
             }
-            console.log(walletOBJ);
             const x = walletOBJ[walletOBJ.length - 1].attributes;
             for (const key in x) {
                 if (key == "land") {
@@ -237,7 +236,7 @@
         }
         function objectToC(walletOBJ) {
             var collab = 0;
-            if (walletOBJ == null) {
+            if (walletOBJ.length == 0) {
                 return 0;
             }
             const x = walletOBJ[walletOBJ.length - 1].attributes;
