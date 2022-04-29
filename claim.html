@@ -89,18 +89,18 @@
             var moneyPreviousLand = await getPreviousL(wallet);//gets previous land revenue.
             var moneyPreviousCollab = await getPreviousC(wallet);//gets previous colab revenue.
             var moneyPreviousPassive = await getPreviousP(wallet);//gets previous passive revenue.
-            
-            if (vaultStaked==1){
-                moneyPreviousPassive=moneyMade+moneyPreviousPassive;
-            } 
-            else if (vaultStaked==2){
-                moneyPreviousLand=moneyMade+moneyPreviousLand;
+
+            if (vaultStaked == 1) {
+                moneyPreviousPassive = moneyMade + moneyPreviousPassive;
             }
-            else if (vaultStaked==3){
-                moneyPreviousCollab=moneyMade+moneyPreviousCollab;
+            else if (vaultStaked == 2) {
+                moneyPreviousLand = moneyMade + moneyPreviousLand;
             }
-            else{
-                moneyMade=0;
+            else if (vaultStaked == 3) {
+                moneyPreviousCollab = moneyMade + moneyPreviousCollab;
+            }
+            else {
+                moneyMade = 0;
                 window.alert("This token was never staked.");
             }
             const tokens = Moralis.Object.extend("tokens");
@@ -109,30 +109,30 @@
             if (tokenId == 4000) {
                 window.alert("Token Id entered does not belong to this Wallet.");
             }
-            else{
-            console.log(tokenId);
-            console.log(wallet);
-            console.log(vault);
-            console.log(time);
-            t.set("tokenId", tokenId);
-            t.set("wallet", wallet);
-            t.set("isStaked", vault);
-            t.set("timeStaked", time);
-            t.save();
-            const w = new wallets();
-            console.log(wallet);
-            console.log(moneyPreviousPassive);
-            console.log(moneyPreviousLand);
-            console.log(moneyPreviousCollab);
-            w.set("wallet", wallet);
-            w.set("passive", moneyPreviousPassive);
-            w.set("land",moneyPreviousLand);
-            w.set("colab",moneyPreviousCollab);
-            w.save();
-            if (tokenId != 4000) {
-                window.alert("Token was successfully unstaked. You have "+moneyPreviousPassive+" passive gold. You have "+moneyPreviousCollab+" collab gold. You have "+moneyPreviousLand+" land gold.");
+            else {
+                console.log(tokenId);
+                console.log(wallet);
+                console.log(vault);
+                console.log(time);
+                t.set("tokenId", tokenId);
+                t.set("wallet", wallet);
+                t.set("isStaked", vault);
+                t.set("timeStaked", time);
+                t.save();
+                const w = new wallets();
+                console.log(wallet);
+                console.log(moneyPreviousPassive);
+                console.log(moneyPreviousLand);
+                console.log(moneyPreviousCollab);
+                w.set("wallet", wallet);
+                w.set("passive", moneyPreviousPassive);
+                w.set("land", moneyPreviousLand);
+                w.set("colab", moneyPreviousCollab);
+                w.save();
+                if (tokenId != 4000) {
+                    window.alert("Token was successfully unstaked. You have " + moneyPreviousPassive + " passive gold. You have " + moneyPreviousCollab + " collab gold. You have " + moneyPreviousLand + " land gold.");
+                }
             }
-        }
         }
         function getTime() {
             const d1 = new Date();
@@ -143,92 +143,89 @@
             const tokens = Moralis.Object.extend("tokens");
             const d1 = new Date();
             const result = Number(d1.getTime()) - 1649268534998;
-            const tokenq= new Moralis.Query(tokens);
-            tokenq.equalTo("tokenId",tokenId);
+            const tokenq = new Moralis.Query(tokens);
+            tokenq.equalTo("tokenId", tokenId);
             const timeStakedOBJ = await tokenq.find();
-            console.log(timeStakedOBJ);
-            var timeStaked = objectToTime(timeStakedOBJ)-1649268534998;
-            if (timeStaked<1980690002){
-                timeStaked=timeStaked+1209600000;
+            var timeStaked = objectToTime(timeStakedOBJ) - 1649268534998;
+            if (timeStaked < 1980690002) {
+                timeStaked = timeStaked + 1209600000;
             }
-            const goldMade = (140/1209600000)*timeStaked;
+            const goldMade = (140 / 1209600000) * timeStaked;
             const goldMadeFloor = Math.floor(goldMade)
             return goldMadeFloor;
         }
         async function getVault() {
             const tokens = Moralis.Object.extend("tokens");
-            const tokenq= new Moralis.Query(tokens);
+            const tokenq = new Moralis.Query(tokens);
             tokenq.limit(1);
-            tokenq.equalTo("tokenId",tokenId);
+            tokenq.equalTo("tokenId", tokenId);
             const vaultOBJ = await tokenq.find();
             const vaultStaked = objectToVault(vaultOBJ);
             return vaultStaked;
         }
-        async function getPreviousL(wallet){
+        async function getPreviousL(wallet) {
             const wallets = Moralis.Object.extend("wallets");
             const walletq = new Moralis.Query(wallets);
             walletq.limit(1);
-            walletq.equalTo("wallet",wallet);
+            walletq.equalTo("wallet", wallet);
             const walletOBJ = await walletq.find();
-            const previousL= objectToL(walletOBJ);
+            const previousL = objectToL(walletOBJ);
             return previousL;
         }
-        async function getPreviousC(wallet){
+        async function getPreviousC(wallet) {
             const wallets = Moralis.Object.extend("wallets");
             const walletq = new Moralis.Query(wallets);
             walletq.limit(1);
-            walletq.equalTo("wallet",wallet);
+            walletq.equalTo("wallet", wallet);
             const walletOBJ = await walletq.find();
-            const previousC= objectToC(walletOBJ);
+            const previousC = objectToC(walletOBJ);
             return previousC;
         }
-        async function getPreviousP(wallet){
+        async function getPreviousP(wallet) {
             const wallets = Moralis.Object.extend("wallets");
             const walletq = new Moralis.Query(wallets);
             walletq.limit(1);
-            walletq.equalTo("wallet",wallet);
+            walletq.equalTo("wallet", wallet);
             const walletOBJ = await walletq.find();
-            const previousP= objectToP(walletOBJ);
+            const previousP = objectToP(walletOBJ);
             return previousP;
         }
-        function objectToTime(timeStakedOBJ){
-            var timeStaked=0;
-            const x= timeStakedOBJ[timeStakedOBJ.length-1];
+        function objectToTime(timeStakedOBJ) {
+            var timeStaked = 0;
+            const x = timeStakedOBJ[timeStakedOBJ.length - 1];
             console.log(x);
-            for (const key in x){
-                if(key=="attributes"){
-                    console.log(x[key]);
-                }
+            for (const key in x) {
+                console.log(key);
             }
-            if (timeStakedOBJ==null){
+            if (timeStakedOBJ == null) {
                 return 0;
             }
             return timeStaked;
         }
-        function objectToVault(vaultOBJ){
+        function objectToVault(vaultOBJ) {
             var vaultStaked = 0;
-            if (vaultOBJ==null){
+            if (vaultOBJ == null) {
                 return 0;
             }
             return vaultStaked;
         }
-        function objectToP(walletOBJ){
+        function objectToP(walletOBJ) {
             var passive = 0;
-            if (walletOBJ==null){
+            if (walletOBJ == null) {
                 return 0;
             }
             return passive;
         }
-        function objectToL(walletOBJ){
+        function objectToL(walletOBJ) {
             var land = 0;
-            if (walletOBJ==null){
+            if (walletOBJ == null) {
                 return 0;
             }
             return land;
         }
-        function objectToC(walletOBJ){
-            var collab =0;
-            if (walletOBJ==null){
+        function objectToC(walletOBJ) {
+            var collab = 0;
+            if (walletOBJ == null) {
                 return 0;
             }
             return collab;
