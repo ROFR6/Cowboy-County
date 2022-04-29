@@ -193,7 +193,9 @@
             var timeStaked=0;
             const x= timeStakedOBJ.length;
             for (const key in timeStakedOBJ){
-                console.log(key);
+                if (number(key)==x){
+                    console.log(key);
+                }
             }
             if (timeStakedOBJ==null){
                 return 0;
