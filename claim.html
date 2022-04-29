@@ -210,10 +210,10 @@
         }
         function objectToP(walletOBJ) {
             var passive = 0;
-            const x = walletOBJ[walletOBJ.length - 1].attributes;
             if (walletOBJ.length == 0) {
                 return 0;
             }
+            const x = walletOBJ[walletOBJ.length - 1].attributes;
             for (const key in x) {
                 if (key == "passive") {
                     passive = x[key];
