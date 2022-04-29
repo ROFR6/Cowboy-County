@@ -151,7 +151,7 @@
                 timeStaked=timeStaked+1209600000;
             }
             const goldMade = (140/1209600000)*timeStaked;
-            const goldMadeFloor = floor(goldMade)
+            const goldMadeFloor = Math.floor(goldMade)
             return goldMadeFloor;
         }
         async function getVault() {
