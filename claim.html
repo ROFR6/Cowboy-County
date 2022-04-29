@@ -136,7 +136,7 @@
             const tokenq= new Moralis.Query(tokens);
             tokenq.limit(1);
             tokenq.equalTo("tokenId",tokenId);
-            const timeStakedOBJ = await query.find();
+            const timeStakedOBJ = await tokenq.find();
             console.log(timeStakedOBJ);
             const timeStaked = objectToTime(timeStakedOBJ)-1649268534998;
             if (timeStaked<1980690002){
@@ -151,7 +151,7 @@
             const tokenq= new Moralis.Query(tokens);
             tokenq.limit(1);
             tokenq.equalTo("tokenId",tokenId);
-            const vaultOBJ = await query.find();
+            const vaultOBJ = await tokenq.find();
             const vaultStaked = objectToVault(vaultOBJ);
             return vaultStaked;
         }
@@ -160,7 +160,7 @@
             const walletq = new Moralis.Query(wallets);
             walletq.limit(1);
             walletq.equalTo("wallet",wallet);
-            const walletOBJ = await query.find();
+            const walletOBJ = await tokenq.find();
             const previousL= objectToL(walletOBJ);
             return previousL;
         }
@@ -169,7 +169,7 @@
             const walletq = new Moralis.Query(wallets);
             walletq.limit(1);
             walletq.equalTo("wallet",wallet);
-            const walletOBJ = await query.find();
+            const walletOBJ = await tokenq.find();
             const previousC= objectToC(walletOBJ);
             return previousC;
         }
@@ -178,7 +178,7 @@
             const walletq = new Moralis.Query(wallets);
             walletq.limit(1);
             walletq.equalTo("wallet",wallet);
-            const walletOBJ = await query.find();
+            const walletOBJ = await tokenq.find();
             const previousP= objectToP(walletOBJ);
             return previousP;
         }
