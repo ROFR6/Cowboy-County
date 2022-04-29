@@ -116,9 +116,7 @@
                 t.set("timeStaked", time);
                 t.save();
                 const w = new wallets();
-                console.log(moneyPreviousPassive);
-                console.log(moneyPreviousLand);
-                console.log(moneyPreviousCollab);
+                if(vaultStaked!=0){
                 w.set("wallet", wallet);
                 w.set("passive", moneyPreviousPassive);
                 w.set("land", moneyPreviousLand);
@@ -127,6 +125,7 @@
                 if (tokenId != 4000) {
                     window.alert("Token was successfully unstaked. You have " + moneyPreviousPassive + " passive gold. You have " + moneyPreviousCollab + " collab gold. You have " + moneyPreviousLand + " land gold.");
                 }
+            }
             }
         }
         function getTime() {
