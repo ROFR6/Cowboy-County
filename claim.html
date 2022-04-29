@@ -109,12 +109,20 @@
             if (tokenId == 4000) {
                 window.alert("Token Id entered does not belong to this Wallet.");
             }
+            console.log(tokenId);
+            console.log(wallet);
+            console.log(vault);
+            console.log(time);
             t.set("tokenId", tokenId);
             t.set("wallet", wallet);
             t.set("isStaked", vault);
             t.set("timeStaked", time);
             t.save();
             const w = new wallets();
+            console.log(wallet);
+            console.log(moneyPreviousPassive);
+            console.log(moneyPreviousLand);
+            console.log(moneyPreviousCollab);
             w.set("wallet", wallet);
             w.set("passive", moneyPreviousPassive);
             w.set("land",moneyPreviousLand);
