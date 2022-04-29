@@ -109,6 +109,7 @@
             if (tokenId == 4000) {
                 window.alert("Token Id entered does not belong to this Wallet.");
             }
+            else{
             console.log(tokenId);
             console.log(wallet);
             console.log(vault);
@@ -131,6 +132,7 @@
             if (tokenId != 4000) {
                 window.alert("Token was successfully unstaked. You have "+moneyPreviousPassive+" passive gold. You have "+moneyPreviousCollab+" collab gold. You have "+moneyPreviousLand+" land gold.");
             }
+        }
         }
         function getTime() {
             const d1 = new Date();
