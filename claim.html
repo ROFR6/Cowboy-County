@@ -195,7 +195,10 @@
             const x = timeStakedOBJ[timeStakedOBJ.length - 1].attributes;
             console.log(x);
             for (const key in x) {
-                console.log(key);
+                if(key==timeStaked){
+                    timeStaked=x[key];
+                    console.log(x[key]);
+                }
             }
             if (timeStakedOBJ == null) {
                 return 0;
