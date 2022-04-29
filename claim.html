@@ -110,17 +110,12 @@
                 window.alert("Token Id entered does not belong to this Wallet.");
             }
             else {
-                console.log(tokenId);
-                console.log(wallet);
-                console.log(vault);
-                console.log(time);
                 t.set("tokenId", tokenId);
                 t.set("wallet", wallet);
                 t.set("isStaked", vault);
                 t.set("timeStaked", time);
                 t.save();
                 const w = new wallets();
-                console.log(wallet);
                 console.log(moneyPreviousPassive);
                 console.log(moneyPreviousLand);
                 console.log(moneyPreviousCollab);
@@ -147,14 +142,11 @@
             tokenq.equalTo("tokenId", tokenId);
             const timeStakedOBJ = await tokenq.find();
             var timeStaked = objectToTime(timeStakedOBJ);
-            console.log(timeStaked);
             if (timeStaked < 1980690002) {
                 timeStaked = timeStaked + 1209600000;
             }
             var actualtimestaked =result-timeStaked;
-            console.log(actualtimestaked);
             const goldMade = (140 / 1209600000) * (result-timeStaked);
-            console.log(goldMade);
             const goldMadeFloor = Math.floor(goldMade)
             return goldMadeFloor;
         }
@@ -222,6 +214,12 @@
         }
         function objectToP(walletOBJ) {
             var passive = 0;
+            const x = walletOBJ[walletOBJ.length - 1].attributes;
+            for (const key in x) {
+                if(key=="passive"){
+                    passive=x[key];
+                }
+            }
             if (walletOBJ == null) {
                 return 0;
             }
@@ -229,6 +227,12 @@
         }
         function objectToL(walletOBJ) {
             var land = 0;
+            const x = walletOBJ[walletOBJ.length - 1].attributes;
+            for (const key in x) {
+                if(key=="land"){
+                    land=x[key];
+                }
+            }
             if (walletOBJ == null) {
                 return 0;
             }
@@ -236,6 +240,12 @@
         }
         function objectToC(walletOBJ) {
             var collab = 0;
+            const x = walletOBJ[walletOBJ.length - 1].attributes;
+            for (const key in x) {
+                if(key=="colab"){
+                    collab=x[key];
+                }
+            }
             if (walletOBJ == null) {
                 return 0;
             }
