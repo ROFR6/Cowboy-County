@@ -146,7 +146,7 @@
             const tokenq = new Moralis.Query(tokens);
             tokenq.equalTo("tokenId", tokenId);
             const timeStakedOBJ = await tokenq.find();
-            var timeStaked = objectToTime(timeStakedOBJ) - 1649268534998;
+            var timeStaked = objectToTime(timeStakedOBJ);
             console.log(timeStaked);
             if (timeStaked < 1980690002) {
                 timeStaked = timeStaked + 1209600000;
@@ -197,7 +197,6 @@
         function objectToTime(timeStakedOBJ) {
             var timeStaked = 0;
             const x = timeStakedOBJ[timeStakedOBJ.length - 1].attributes;
-            console.log(x);
             for (const key in x) {
                 if(key=="timeStaked"){
                     timeStaked=x[key];
@@ -211,7 +210,6 @@
         function objectToVault(vaultOBJ) {
             var vaultStaked = 0;
             const x = vaultOBJ[vaultOBJ.length - 1].attributes;
-            console.log(x);
             for (const key in x) {
                 if(key=="isStaked"){
                     vaultStaked=x[key];
