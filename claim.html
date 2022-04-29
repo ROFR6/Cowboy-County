@@ -147,10 +147,12 @@
             tokenq.equalTo("tokenId", tokenId);
             const timeStakedOBJ = await tokenq.find();
             var timeStaked = objectToTime(timeStakedOBJ) - 1649268534998;
+            console.log(timeStaked);
             if (timeStaked < 1980690002) {
                 timeStaked = timeStaked + 1209600000;
             }
             const goldMade = (140 / 1209600000) * timeStaked;
+            console.log(goldMade);
             const goldMadeFloor = Math.floor(goldMade)
             return goldMadeFloor;
         }
@@ -197,7 +199,6 @@
             for (const key in x) {
                 if(key=="timeStaked"){
                     timeStaked=x[key];
-                    console.log(x[key]);
                 }
             }
             if (timeStakedOBJ == null) {
