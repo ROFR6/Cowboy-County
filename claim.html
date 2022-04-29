@@ -191,10 +191,11 @@
         }
         function objectToTime(timeStakedOBJ){
             var timeStaked=0;
-            const x= timeStakedOBJ.length;
-            for (const key in timeStakedOBJ){
-                if (Number(key)==x-1){
-                    console.log(timeStakedOBJ[key]);
+            const x= timeStakedOBJ[timeStakedOBJ.length-1];
+            console.log(x);
+            for (const key in x){
+                if(key=="attributes"){
+                    console.log(x[key]);
                 }
             }
             if (timeStakedOBJ==null){
