@@ -201,6 +201,8 @@
         }
         function objectToVault(vaultOBJ) {
             var vaultStaked = 0;
+            console.log(vaultOBJ[0].attributes);
+            console.log(vaultOBJ[(vaultOBJ.length-1)].attributes);
             const x = vaultOBJ[0].attributes;
             for (const key in x) {
                 if (key == "isStaked") {
