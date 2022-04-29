@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Cowboy County</title>
+    <link href="./style.css" rel="stylesheet">
+    <!-- Moralis SDK code -->
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <div class=top>
+        <div class=logo>
+            <img src="./images/logo_white.png">
+        </div>
+        <div class=top-container>
+            <h1><a href="./index.html">Home</a></h1>
+        </div>
+        <div class=top-container>
+            <h1><a href="./about-us.html">About Us</a></h1>
+        </div>
+        <div class=top-container>
+            <h1><a href="./mint.html">Mint</a></h1>
+        </div>
+        <div class=top-container>
+            <h1><a href="./staking.html">Staking</a></h1>
+        </div>
+    </div>
+    <!-- /Navigation Bar -->
+    <center>
+        <h3>Staking</h3>
+        <img src="./images/Web_BG.png" height="100%">
+        <div class="space"></div>
+        <h5>Howdy! In order to unstake follow these directions:</h5>
+        <h5>1. Click the initialize button</h5>
+        <h5>2. Click the Sign into Metamask button</h5>
+        <h5>3. Sign the message on the Metamask popup</h5>
+        <h5>4. Review NFTs you have staked</h5>
+        <h5>5. Enter the Token ID of the token you would like to unstake</h5>
+        <h5>6. Select ok</h5>
+        <h5>You have then successfully unstaked a Cowboy!</h5>
+        <div class="container">
+            <div class="row">
+                <button id="btn-logout" class="button1">Intialize</button>
+                <button id="btn-login" class="button1">Sign into Metamask</button>
+            </div>
+            <div class="row">
+                <div class="space"></div>
+                <h3>NFTs Staked are:</h3>
+                <button id="btn-stakecolab" class="button2">Unstake NFT</button>
+            </div>
+        </div>
+        <div class="space"></div>
+        <div class="space"></div>
+    </center>
+    <script>
+        // connect to Moralis server
+        const serverUrl = "https://jsotamk6fp3e.usemoralis.com:2053/server";
+        const appId = "mxC5xwV2xmfNGdc9Zoj7HdBidtMrvn7wB4hxS85X";
+        Moralis.start({ serverUrl, appId });
+        let user = null;
+        var tokenId = 4000;
+
+        async function login() {
+            user = Moralis.User.current();
+            if (!user) {
+                user = await Moralis.authenticate({
+                    signingMessage: "Log in to MetaMask",
+                });
+            }
+        }
+
+        async function logOut() {
+            await Moralis.User.logOut();
+        }
+        async function unstake() {
+            const wallet = user.get("ethAddress");
+            const vault = 0;
+            await getId(wallet);//gets the tokenId of one to unstake
+            const time = getTime();
+            var moneyMade = getTimeStaked(); //gets when the original was staked and subtracts that from time now and converts
+            const vaultStaked = getVault();//gets the vault of the token that was staked
+            var moneyPreviousLand = getPreviousL(wallet);//gets previous land revenue.
+            var moneyPreviousCollab = getPreviousC(wallet);//gets previous colab revenue.
+            var moneyPreviousPassive = getPreviousP(wallet);//gets previous passive revenue.
+            
+            if (vaultStaked==1){
+                moneyPreviousPassive=moneyMade+moneyPreviousPassive;
+            } 
+            else if (vaultStaked==2){
+                moneyPreviousLand=moneyMade+moneyPreviousLand;
+            }
+            else if (vaultStaked==3){
+                moneyPreviousCollab=moneyMade+moneyPreviousCollab;
+            }
+            else{
+                moneyMade=0;
+                window.alert("This token was never staked.");
+            }
+            const tokens = Moralis.Object.extend("tokens");
+            const wallets = Moralis.Object.extend("wallets");
+            const t = new tokens();
+            if (tokenId == 4000) {
+                window.alert("Token Id entered does not belong to this Wallet.");
+            }
+            t.set("tokenId", tokenId);
+            t.set("wallet", wallet);
+            t.set("isStaked", vault);
+            t.set("timeStaked", time);
+            t.save();
+            const w = new wallets();
+            w.set("wallet", wallet);
+            w.set("passive", moneyPreviousPassive);
+            w.set("land",moneyPreviousLand);
+            w.set("colab",moneyPreviousCollab);
+            w.save();
+            if (tokenId != 4000) {
+                window.alert("Token was successfully staked. You have "+moneyPreviousPassive+"passive gold. You have "+moneyPreviousLand+"land gold. You have "+moneyPreviousLand+"land gold.");
+            }
+        }
+        function getTime() {
+            const d1 = new Date();
+            const result = Number(d1.getTime()) - 1649268534998;
+            return result;
+        }
+        function getTimeStaked() {
+            const d1 = new Date();
+            const result = Number(d1.getTime()) - 1649268534998;
+            const tokenq= new Moralis.Query(tokens);
+            tokenq.limit(1);
+            tokenq.equalTo("tokenId",tokenId);
+            const timeStakedOBJ = await query.find();
+            console.log(timeStakedOBJ);
+            const timeStaked = objectToTime(timeStakedOBJ)-1649268534998;
+            if (timeStaked<1980690002){
+                timeStaked=timeStaked+1209600000;
+            }
+            const goldMade = (140/1209600000)*timestaked;
+            const goldMadeFloor = floor(goldMade)
+            return goldMadeFloor;
+        }
+        function getVault() {
+            const tokenq= new Moralis.Query(tokens);
+            tokenq.limit(1);
+            tokenq.equalTo("tokenId",tokenId);
+            const vaultOBJ = await query.find();
+            const vaultStaked = objectToVault(vaultOBJ);
+            return vaultStaked;
+        }
+        function getPreviousL(wallet){
+            const walletq = new Moralis.Query(wallets);
+            walletq.limit(1);
+            walletq.equalTo("wallet",wallet);
+            const walletOBJ = await query.find();
+            const previousL= objectToL(walletOBJ);
+            return previousL;
+        }
+        function getPreviousC(wallet){
+            const walletq = new Moralis.Query(wallets);
+            walletq.limit(1);
+            walletq.equalTo("wallet",wallet);
+            const walletOBJ = await query.find();
+            const previousC= objectToC(walletOBJ);
+            return previousC;
+        }
+        function getPreviousP(wallet){
+            const walletq = new Moralis.Query(wallets);
+            walletq.limit(1);
+            walletq.equalTo("wallet",wallet);
+            const walletOBJ = await query.find();
+            const previousP= objectToP(walletOBJ);
+            return previousP;
+        }
+        function objectToTime(timeStakedOBJ){
+            var timeStaked=0;
+            if (timeStakedOBJ==null){
+                return 0;
+            }
+            return timeStaked;
+        }
+        function objectToVault(vaultOBJ){
+            var vaultStaked = 0;
+            if (vaultOBJ==null){
+                return 0;
+            }
+            return vaultStaked;
+        }
+        function objectToP(walletOBJ){
+            var passive = 0;
+            if (walletOBJ==null){
+                return 0;
+            }
+            return passive;
+        }
+        function objectToL(walletOBJ){
+            var land = 0;
+            if (walletOBJ==null){
+                return 0;
+            }
+            return land;
+        }
+        function objectToC(walletOBJ){
+            var collab =0;
+            if (walletOBJ==null){
+                return 0;
+            }
+            return collab;
+        }
+        async function getId(wallet) {
+            let r = 4000;
+
+            let t = window.prompt("Enter the token Id of the token you would like to unstake.");
+            const options = {
+                address: "0xE506c76E9118119BbD2736Eb12B65E8d22511258",
+                token_id: t,
+                chain: "matic",
+            };
+            var owner = "";
+            const ownerOBJ = await Moralis.Web3API.token.getTokenIdOwners(options);
+            for (const key in ownerOBJ) {
+                if (key == "result") {
+                    let x = ownerOBJ[key];
+                    if (x.length != 0) {
+                        let y = x[0];
+                        for (const lil in y) { //problem
+                            if (lil == "owner_of") {
+                                str = JSON.stringify(y[lil]);
+                                owner = str;
+                            }
+                        }
+                    }
+                    else {
+                        owner = "none"
+                    }
+                }
+            }
+            if (owner == JSON.stringify(wallet)) {
+                r = Number(t);
+            }
+            tokenId = r;
+            //return Number(r);
+        }
+
+
+        document.getElementById("btn-login").onclick = login;
+        document.getElementById("btn-logout").onclick = logOut;
+        document.getElementById("btn-unstake").addEventListener("click", unstake);
+    </script>
+</body>
+
+</html
