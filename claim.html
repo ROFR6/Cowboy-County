@@ -129,7 +129,7 @@
             const result = Number(d1.getTime()) - 1649268534998;
             return result;
         }
-        function getTimeStaked() {
+        async function getTimeStaked() {
             const d1 = new Date();
             const result = Number(d1.getTime()) - 1649268534998;
             const tokenq= new Moralis.Query(tokens);
@@ -145,7 +145,7 @@
             const goldMadeFloor = floor(goldMade)
             return goldMadeFloor;
         }
-        function getVault() {
+        async function getVault() {
             const tokenq= new Moralis.Query(tokens);
             tokenq.limit(1);
             tokenq.equalTo("tokenId",tokenId);
@@ -153,7 +153,7 @@
             const vaultStaked = objectToVault(vaultOBJ);
             return vaultStaked;
         }
-        function getPreviousL(wallet){
+        async function getPreviousL(wallet){
             const walletq = new Moralis.Query(wallets);
             walletq.limit(1);
             walletq.equalTo("wallet",wallet);
@@ -161,7 +161,7 @@
             const previousL= objectToL(walletOBJ);
             return previousL;
         }
-        function getPreviousC(wallet){
+        async function getPreviousC(wallet){
             const walletq = new Moralis.Query(wallets);
             walletq.limit(1);
             walletq.equalTo("wallet",wallet);
@@ -169,7 +169,7 @@
             const previousC= objectToC(walletOBJ);
             return previousC;
         }
-        function getPreviousP(wallet){
+        async function getPreviousP(wallet){
             const walletq = new Moralis.Query(wallets);
             walletq.limit(1);
             walletq.equalTo("wallet",wallet);
