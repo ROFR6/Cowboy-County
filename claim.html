@@ -184,66 +184,66 @@
         }
         function objectToTime(timeStakedOBJ) {
             var timeStaked = 0;
+            if (timeStakedOBJ == null) {
+                return 0;
+            }
             const x = timeStakedOBJ[timeStakedOBJ.length - 1].attributes;
             for (const key in x) {
                 if (key == "timeStaked") {
                     timeStaked = x[key];
                 }
             }
-            if (timeStakedOBJ == null) {
-                return 0;
-            }
             return timeStaked;
         }
         function objectToVault(vaultOBJ) {
             var vaultStaked = 0;
+            if (vaultOBJ == null) {
+                return 0;
+            }
             const x = vaultOBJ[vaultOBJ.length-1].attributes;
             for (const key in x) {
                 if (key == "isStaked") {
                     vaultStaked = x[key];
                 }
             }
-            if (vaultOBJ == null) {
-                return 0;
-            }
             return vaultStaked;
         }
         function objectToP(walletOBJ) {
             var passive = 0;
             const x = walletOBJ[walletOBJ.length - 1].attributes;
+            if (walletOBJ == null) {
+                return 0;
+            }
             for (const key in x) {
                 if (key == "passive") {
                     passive = x[key];
                 }
             }
-            if (walletOBJ == null) {
-                return 0;
-            }
             return passive;
         }
         function objectToL(walletOBJ) {
             var land = 0;
+            if (walletOBJ == null) {
+                return 0;
+            }
             const x = walletOBJ[walletOBJ.length - 1].attributes;
             for (const key in x) {
                 if (key == "land") {
                     land = x[key];
                 }
             }
-            if (walletOBJ == null) {
-                return 0;
-            }
             return land;
         }
         function objectToC(walletOBJ) {
             var collab = 0;
+            if (walletOBJ == null) {
+                return 0;
+            }
             const x = walletOBJ[walletOBJ.length - 1].attributes;
             for (const key in x) {
                 if (key == "colab") {
                     collab = x[key];
                 }
-            }
-            if (walletOBJ == null) {
-                return 0;
             }
             return collab;
         }
