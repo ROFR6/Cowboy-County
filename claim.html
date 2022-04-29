@@ -116,7 +116,6 @@
                 t.set("timeStaked", time);
                 t.save();
                 const w = new wallets();
-                console.log(vaultStaked);
                 if (vaultStaked != 0) {
                     w.set("wallet", wallet);
                     w.set("passive", moneyPreviousPassive);
@@ -142,9 +141,8 @@
             tokenq.equalTo("tokenId", tokenId);
             const timeStakedOBJ = await tokenq.find();
             var timeStaked = objectToTime(timeStakedOBJ);
-            console.log(timeStaked);
             if (timeStaked < (86400000*21)) {
-                timeStaked = timeStaked + (86400000*14);
+                timeStaked = timeStaked - (86400000*14);
             }
             var actualtimestaked = result - timeStaked;
             var actualtimedays = actualtimestaked/86400000
