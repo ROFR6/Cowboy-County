@@ -153,7 +153,6 @@
         async function getVault() {
             const tokens = Moralis.Object.extend("tokens");
             const tokenq = new Moralis.Query(tokens);
-            tokenq.limit(1);
             tokenq.equalTo("tokenId", tokenId);
             const vaultOBJ = await tokenq.find();
             const vaultStaked = objectToVault(vaultOBJ);
@@ -162,7 +161,6 @@
         async function getPreviousL(wallet) {
             const wallets = Moralis.Object.extend("wallets");
             const walletq = new Moralis.Query(wallets);
-            walletq.limit(1);
             walletq.equalTo("wallet", wallet);
             const walletOBJ = await walletq.find();
             const previousL = objectToL(walletOBJ);
@@ -171,7 +169,6 @@
         async function getPreviousC(wallet) {
             const wallets = Moralis.Object.extend("wallets");
             const walletq = new Moralis.Query(wallets);
-            walletq.limit(1);
             walletq.equalTo("wallet", wallet);
             const walletOBJ = await walletq.find();
             const previousC = objectToC(walletOBJ);
@@ -180,7 +177,6 @@
         async function getPreviousP(wallet) {
             const wallets = Moralis.Object.extend("wallets");
             const walletq = new Moralis.Query(wallets);
-            walletq.limit(1);
             walletq.equalTo("wallet", wallet);
             const walletOBJ = await walletq.find();
             const previousP = objectToP(walletOBJ);
@@ -201,9 +197,7 @@
         }
         function objectToVault(vaultOBJ) {
             var vaultStaked = 0;
-            console.log(vaultOBJ[0].attributes);
-            console.log(vaultOBJ[(vaultOBJ.length-1)].attributes);
-            const x = vaultOBJ[0].attributes;
+            const x = vaultOBJ[vaultOBJ.length-1].attributes;
             for (const key in x) {
                 if (key == "isStaked") {
                     vaultStaked = x[key];
