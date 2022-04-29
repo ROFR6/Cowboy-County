@@ -151,7 +151,9 @@
             if (timeStaked < 1980690002) {
                 timeStaked = timeStaked + 1209600000;
             }
-            const goldMade = (140 / 1209600000) * timeStaked;
+            var actualtimestaked =result-timeStaked;
+            console.log(actualtimestaked);
+            const goldMade = (140 / 1209600000) * (result-timeStaked);
             console.log(goldMade);
             const goldMadeFloor = Math.floor(goldMade)
             return goldMadeFloor;
