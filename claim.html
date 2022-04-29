@@ -116,16 +116,16 @@
                 t.set("timeStaked", time);
                 t.save();
                 const w = new wallets();
-                if(vaultStaked!=0){
-                w.set("wallet", wallet);
-                w.set("passive", moneyPreviousPassive);
-                w.set("land", moneyPreviousLand);
-                w.set("colab", moneyPreviousCollab);
-                w.save();
-                if (tokenId != 4000) {
-                    window.alert("Token was successfully unstaked. You have " + moneyPreviousPassive + " passive gold. You have " + moneyPreviousCollab + " collab gold. You have " + moneyPreviousLand + " land gold.");
+                if (vaultStaked != 0) {
+                    w.set("wallet", wallet);
+                    w.set("passive", moneyPreviousPassive);
+                    w.set("land", moneyPreviousLand);
+                    w.set("colab", moneyPreviousCollab);
+                    w.save();
+                    if (tokenId != 4000) {
+                        window.alert("Token was successfully unstaked. You have " + moneyPreviousPassive + " passive gold. You have " + moneyPreviousCollab + " collab gold. You have " + moneyPreviousLand + " land gold.");
+                    }
                 }
-            }
             }
         }
         function getTime() {
@@ -144,8 +144,8 @@
             if (timeStaked < 1980690002) {
                 timeStaked = timeStaked + 1209600000;
             }
-            var actualtimestaked =result-timeStaked;
-            const goldMade = (140 / 1209600000) * (result-timeStaked);
+            var actualtimestaked = result - timeStaked;
+            const goldMade = (140 / 1209600000) * (result - timeStaked);
             const goldMadeFloor = Math.floor(goldMade)
             return goldMadeFloor;
         }
@@ -189,8 +189,8 @@
             var timeStaked = 0;
             const x = timeStakedOBJ[timeStakedOBJ.length - 1].attributes;
             for (const key in x) {
-                if(key=="timeStaked"){
-                    timeStaked=x[key];
+                if (key == "timeStaked") {
+                    timeStaked = x[key];
                 }
             }
             if (timeStakedOBJ == null) {
@@ -202,8 +202,8 @@
             var vaultStaked = 0;
             const x = vaultOBJ[vaultOBJ.length - 1].attributes;
             for (const key in x) {
-                if(key=="isStaked"){
-                    vaultStaked=x[key];
+                if (key == "isStaked") {
+                    vaultStaked = x[key];
                 }
             }
             if (vaultOBJ == null) {
@@ -215,8 +215,8 @@
             var passive = 0;
             const x = walletOBJ[walletOBJ.length - 1].attributes;
             for (const key in x) {
-                if(key=="passive"){
-                    passive=x[key];
+                if (key == "passive") {
+                    passive = x[key];
                 }
             }
             if (walletOBJ == null) {
@@ -228,8 +228,8 @@
             var land = 0;
             const x = walletOBJ[walletOBJ.length - 1].attributes;
             for (const key in x) {
-                if(key=="land"){
-                    land=x[key];
+                if (key == "land") {
+                    land = x[key];
                 }
             }
             if (walletOBJ == null) {
@@ -241,8 +241,8 @@
             var collab = 0;
             const x = walletOBJ[walletOBJ.length - 1].attributes;
             for (const key in x) {
-                if(key=="colab"){
-                    collab=x[key];
+                if (key == "colab") {
+                    collab = x[key];
                 }
             }
             if (walletOBJ == null) {
