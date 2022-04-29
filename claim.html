@@ -142,7 +142,6 @@
             const d1 = new Date();
             const result = Number(d1.getTime()) - 1649268534998;
             const tokenq= new Moralis.Query(tokens);
-            tokenq.limit(1);
             tokenq.equalTo("tokenId",tokenId);
             const timeStakedOBJ = await tokenq.find();
             console.log(timeStakedOBJ);
