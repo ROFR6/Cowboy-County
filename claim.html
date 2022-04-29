@@ -84,11 +84,11 @@
             const vault = 0;
             await getId(wallet);//gets the tokenId of one to unstake
             const time = getTime();
-            var moneyMade = getTimeStaked(); //gets when the original was staked and subtracts that from time now and converts
-            const vaultStaked = getVault();//gets the vault of the token that was staked
-            var moneyPreviousLand = getPreviousL(wallet);//gets previous land revenue.
-            var moneyPreviousCollab = getPreviousC(wallet);//gets previous colab revenue.
-            var moneyPreviousPassive = getPreviousP(wallet);//gets previous passive revenue.
+            var moneyMade = await getTimeStaked(); //gets when the original was staked and subtracts that from time now and converts
+            const vaultStaked = await getVault();//gets the vault of the token that was staked
+            var moneyPreviousLand = await getPreviousL(wallet);//gets previous land revenue.
+            var moneyPreviousCollab = await getPreviousC(wallet);//gets previous colab revenue.
+            var moneyPreviousPassive = await getPreviousP(wallet);//gets previous passive revenue.
             
             if (vaultStaked==1){
                 moneyPreviousPassive=moneyMade+moneyPreviousPassive;
@@ -191,6 +191,10 @@
         }
         function objectToTime(timeStakedOBJ){
             var timeStaked=0;
+            const x= timeStakedOBJ.length;
+            const y= timeStakedOBJ[x];
+            console.log(x);
+            console.log(y);
             if (timeStakedOBJ==null){
                 return 0;
             }
