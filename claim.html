@@ -33,7 +33,7 @@
         </div>
         <div class=top-container>
             <h1><a href="./claim.html">Claim</a></h1>
-          </div>
+        </div>
     </div>
     <!-- /Navigation Bar -->
     <center>
@@ -55,6 +55,9 @@
             </div>
             <div class="row">
                 <button id="btn-unstake" class="button2">Unstake NFT</button>
+            </div>
+            <div class="row">
+                <button id="btn-howMuch" class="button2">Current Amount From NFT</button>
             </div>
         </div>
         <div class="space"></div>
@@ -144,14 +147,71 @@
             var timeStaked = objectToTime(timeStakedOBJ);
             var actualtimestaked = result - timeStaked;
             if (timeStaked < (1953542493)) {
-                actualtimestaked = actualtimestaked + (86400000*14);
+                actualtimestaked = actualtimestaked + (86400000 * 14);
             }
-            var actualtimedays = actualtimestaked/86400000
-            console.log(actualtimedays);
+            if (timeStaked < (86400000 * 30)) {
+                if (timeStaked < (86400000 * 5)) {
+                    actualtimestaked = actualtimestaked * .4;
+                }
+                else if (timeStaked < (86400000 * 10)) {
+                    actualtimestaked = actualtimestaked * .5;
+                }
+                else if (timeStaked < (86400000 * 15)) {
+                    actualtimestaked = actualtimestaked * .6;
+                }
+                else if (timeStaked < (86400000 * 20)) {
+                    actualtimestaked = actualtimestaked * .7;
+                }
+                else if (timeStaked < (86400000 * 25)) {
+                    actualtimestaked = actualtimestaked * .8;
+                }
+                else if (timeStaked < (86400000 * 30)) {
+                    actualtimestaked = actualtimestaked * .9;
+                }
+
+            }
+            var actualtimedays = actualtimestaked / 86400000;
             const goldMade = 10 * actualtimedays;
             const goldMadeFloor = Math.floor(goldMade)
-            console.log(goldMadeFloor);
             return goldMadeFloor;
+        }
+        async function howMuch() {
+            const tokens = Moralis.Object.extend("tokens");
+            const d1 = new Date();
+            const result = Number(d1.getTime()) - 1649268534998;
+            const tokenq = new Moralis.Query(tokens);
+            tokenq.equalTo("tokenId", tokenId);
+            const timeStakedOBJ = await tokenq.find();
+            var timeStaked = objectToTime(timeStakedOBJ);
+            var actualtimestaked = result - timeStaked;
+            if (timeStaked < (1953542493)) {
+                actualtimestaked = actualtimestaked + (86400000 * 14);
+            }
+            if (timeStaked < (86400000 * 30)) {
+                if (timeStaked < (86400000 * 5)) {
+                    actualtimestaked = actualtimestaked * .4;
+                }
+                else if (timeStaked < (86400000 * 10)) {
+                    actualtimestaked = actualtimestaked * .5;
+                }
+                else if (timeStaked < (86400000 * 15)) {
+                    actualtimestaked = actualtimestaked * .6;
+                }
+                else if (timeStaked < (86400000 * 20)) {
+                    actualtimestaked = actualtimestaked * .7;
+                }
+                else if (timeStaked < (86400000 * 25)) {
+                    actualtimestaked = actualtimestaked * .8;
+                }
+                else if (timeStaked < (86400000 * 30)) {
+                    actualtimestaked = actualtimestaked * .9;
+                }
+
+            }
+            var actualtimedays = actualtimestaked / 86400000
+            const goldMade = 10 * actualtimedays;
+            const goldMadeFloor = Math.floor(goldMade);
+            window.alert("This token would give " +goldMadeFloor+ " gold.");
         }
         async function getVault() {
             const tokens = Moralis.Object.extend("tokens");
@@ -203,7 +263,7 @@
             if (vaultOBJ.length == 0) {
                 return 0;
             }
-            const x = vaultOBJ[vaultOBJ.length-1].attributes;
+            const x = vaultOBJ[vaultOBJ.length - 1].attributes;
             for (const key in x) {
                 if (key == "isStaked") {
                     vaultStaked = x[key];
@@ -289,6 +349,7 @@
         document.getElementById("btn-login").onclick = login;
         document.getElementById("btn-logout").onclick = logOut;
         document.getElementById("btn-unstake").addEventListener("click", unstake);
+        document.getElementById("btn-howMuch").addEventListener("click", howMuch);
     </script>
 </body>
 
