@@ -184,6 +184,7 @@
             tokenq.equalTo("tokenId", tokenIdhm);
             const timeStakedOBJ = await tokenq.find();
             var timeStaked = objectToTime(timeStakedOBJ);
+            console.log(timeStaked);
             var actualtimestaked = result - timeStaked;
             if (timeStaked < (1953542493)) {
                 actualtimestaked = actualtimestaked + (86400000 * 14);
@@ -209,7 +210,7 @@
                 }
 
             }
-            var actualtimedays = actualtimestaked / 86400000
+            var actualtimedays = actualtimestaked / 86400000;
             const goldMade = 10 * actualtimedays;
             const goldMadeFloor = Math.floor(goldMade);
             window.alert("This token would give " +goldMadeFloor+ " gold.");
