@@ -184,6 +184,7 @@
             tokenq.equalTo("tokenId", tokenIdhm);
             const timeStakedOBJ = await tokenq.find();
             var timeStaked = objectToTime(timeStakedOBJ);
+            console.log(timeStakedOBJ);
             console.log(timeStaked);
             var actualtimestaked = result - timeStaked;
             if (timeStaked < (1953542493)) {
