@@ -189,35 +189,27 @@
                 return;
             }
             var actualtimestaked = result - timeStaked;
-            console.log(actualtimestaked);
             if (timeStaked < (1953542493)) {
                 actualtimestaked = actualtimestaked + (86400000 * 14);
             }
-            console.log(actualtimestaked);
             if (timeStaked < (86400000 * 30)) {
                 if (timeStaked < (86400000 * 5)) {
                     actualtimestaked = actualtimestaked * .4;
-                    console.log(actualtimestaked);
                 }
                 else if (timeStaked < (86400000 * 10)) {
                     actualtimestaked = actualtimestaked * .5;
-                    console.log(actualtimestaked);
                 }
                 else if (timeStaked < (86400000 * 15)) {
                     actualtimestaked = actualtimestaked * .6;
-                    console.log(actualtimestaked);
                 }
                 else if (timeStaked < (86400000 * 20)) {
                     actualtimestaked = actualtimestaked * .7;
-                    console.log(actualtimestaked);
                 }
                 else if (timeStaked < (86400000 * 25)) {
                     actualtimestaked = actualtimestaked * .8;
-                    console.log(actualtimestaked);
                 }
                 else if (timeStaked < (86400000 * 30)) {
                     actualtimestaked = actualtimestaked * .9;
-                    console.log(actualtimestaked);
                 }
 
             }
