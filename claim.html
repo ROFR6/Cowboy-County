@@ -177,15 +177,15 @@
         }
         async function howMuch() {
             const tokens = Moralis.Object.extend("tokens");
-            const tokenIdhm= window.prompt("Enter the token Id of the token you would like to check.");
+            const tokenIdhm = window.prompt("Enter the token Id of the token you would like to check.");
             const d1 = new Date();
             const result = Number(d1.getTime()) - 1649268534998;
             const tokenq = new Moralis.Query(tokens);
             tokenq.equalTo("tokenId", Number(tokenIdhm));
             const timeStakedOBJ = await tokenq.find();
             var timeStaked = objectToTime(timeStakedOBJ);
-            if(timeStaked==0){
-                window.alert("This token would give " +0+ " gold.");
+            if (timeStaked == 0) {
+                window.alert("This token would give " + 0 + " gold.");
                 return;
             }
             var actualtimestaked = result - timeStaked;
@@ -216,7 +216,7 @@
             var actualtimedays = actualtimestaked / 86400000;
             const goldMade = 10 * actualtimedays;
             const goldMadeFloor = Math.floor(goldMade);
-            window.alert("This token would give " +goldMadeFloor+ " gold.");
+            window.alert("This token would give " + goldMadeFloor + " gold.");
         }
         async function getVault() {
             const tokens = Moralis.Object.extend("tokens");
