@@ -186,6 +186,10 @@
             var timeStaked = objectToTime(timeStakedOBJ);
             console.log(timeStakedOBJ);
             console.log(timeStaked);
+            if(timeStaked==0){
+                window.alert("This token would give " +0+ " gold.");
+                return;
+            }
             var actualtimestaked = result - timeStaked;
             console.log(actualtimestaked);
             if (timeStaked < (1953542493)) {
