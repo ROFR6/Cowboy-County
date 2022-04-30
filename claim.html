@@ -177,10 +177,11 @@
         }
         async function howMuch() {
             const tokens = Moralis.Object.extend("tokens");
+            const tokenIdhm= window.prompt("Enter the token Id of the token you would like to check.");
             const d1 = new Date();
             const result = Number(d1.getTime()) - 1649268534998;
             const tokenq = new Moralis.Query(tokens);
-            tokenq.equalTo("tokenId", tokenId);
+            tokenq.equalTo("tokenId", tokenIdhm);
             const timeStakedOBJ = await tokenq.find();
             var timeStaked = objectToTime(timeStakedOBJ);
             var actualtimestaked = result - timeStaked;
