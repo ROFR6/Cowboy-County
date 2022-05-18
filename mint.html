@@ -42,6 +42,7 @@
             var v = 70000000000000000;
             const ethereumButton = document.querySelector('.enableEthereumButton');
             const sendEthButton = document.querySelector('.sendEthButton');
+            const sendEthButtonHalf = document.querySelector('.sendEthButtonHalf');
 
             let accounts = [];
 
@@ -55,6 +56,22 @@
                                 from: accounts[0],
                                 to: '0xb39c4cecde7e62ada13519ddd9f70397b0ac9199',
                                 value: getValue(accounts[0]),
+                                gas: '0x5208',
+                            },
+                        ],
+                    })
+                    .then((txHash) => console.log(txHash))
+                    .catch((error) => console.error);
+            });
+            sendEthButtonHalf.addEventListener('click', () => {
+                ethereum
+                    .request({
+                        method: 'eth_sendTransaction',
+                        params: [
+                            {
+                                from: accounts[0],
+                                to: '0xb39c4cecde7e62ada13519ddd9f70397b0ac9199',
+                                value: getValueHalf(accounts[0]),
                                 gas: '0x5208',
                             },
                         ],
@@ -104,6 +121,18 @@
                 }
                 return (number * vstar).toString(16)
             }
+            function getValueHalf(x) {
+                const whitelisted = new Set();
+                whitelisted.add('0xA817a16412752DA62beA01A450B974e429B3008d');
+                
+                if (x == 0xA817a16412752DA62beA01A450B974e429B3008d || x==0xD9Ba2F9e4F3b87ab77e00563bdB6917426ee6657) {
+                    vstar = 35000000000000000;
+                }
+                else {
+                    vstar = 70000000000000000;
+                }
+                return (number * vstar).toString(16)
+            }
         }
 
 
@@ -124,6 +153,9 @@
         </button>
         <button class="sendEthButton btn">
             <h1>Mint</h1>
+        </button>
+        <button class="sendEthButtonHalf btn">
+            <h1>Approved Half-Off Mint</h1>
         </button>
     </center>
 
