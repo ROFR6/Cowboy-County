@@ -206,11 +206,11 @@
                 return;
             }
             var actualtimestaked = result - timeStaked;
+            var actualtimedays = actualtimestaked / 86400000;
             if (timeStaked < (1953542493)) {
-                actualtimestaked = actualtimestaked + (86400000 * 14);
+                actualtimedays = actualtimedays + 14;
                 console.log("bonus granted");
             }
-            var actualtimedays = actualtimestaked / 86400000;
             console.log(actualtimedays);
             if (actualtimedays < 30) {
                 if (actualtimedays < 5) {
