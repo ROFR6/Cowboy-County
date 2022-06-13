@@ -209,38 +209,28 @@
             var actualtimedays = actualtimestaked / 86400000;
             if (timeStaked < (1953542493)) {
                 actualtimedays = actualtimedays + 14;
-                console.log("bonus granted");
             }
-            console.log(actualtimedays);
             if (actualtimedays < 30) {
                 if (actualtimedays < 5) {
-                    actualtimestaked = actualtimestaked * .4;
-                    console.log("40");
+                    actualtimedays = actualtimedays * .4;
                 }
                 else if (actualtimedays < 10) {
-                    actualtimestaked = actualtimestaked * .5;
-                    console.log("50");
+                    actualtimedays = actualtimedays * .5;
                 }
                 else if (timeStaked < 15) {
-                    actualtimestaked = actualtimestaked * .6;
-                    console.log("60");
+                    actualtimedays = actualtimedays * .6;
                 }
                 else if (actualtimedays < 20) {
-                    actualtimestaked = actualtimestaked * .7;
-                    console.log("70");
+                    actualtimedays = actualtimedays * .7;
                 }
                 else if (actualtimedays < 25) {
-                    actualtimestaked = actualtimestaked * .8;
-                    console.log("80");
+                    actualtimedays = actualtimedays * .8;
                 }
                 else if (actualtimedays < 30) {
-                    actualtimestaked = actualtimestaked * .9;
-                    console.log("90");
+                    actualtimedays = actualtimedays * .9;
                 }
 
             }
-            var actualtimedays = actualtimestaked / 86400000;
-            console.log(actualtimedays);
             const goldMade = 10 * actualtimedays;
             const goldMadeFloor = Math.floor(goldMade);
             window.alert("This token would give " + goldMadeFloor + " gold.");
