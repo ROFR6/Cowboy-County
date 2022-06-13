@@ -212,28 +212,28 @@
             }
             var actualtimedays = actualtimestaked / 86400000;
             console.log(actualtimedays);
-            if (timeStaked < (86400000 * 30)) {
-                if (timeStaked < (86400000 * 5)) {
+            if (actualtimedays < 30) {
+                if (actualtimedays < 5) {
                     actualtimestaked = actualtimestaked * .4;
                     console.log("40");
                 }
-                else if (timeStaked < (86400000 * 10)) {
+                else if (actualtimedays < 10) {
                     actualtimestaked = actualtimestaked * .5;
                     console.log("50");
                 }
-                else if (timeStaked < (86400000 * 15)) {
+                else if (timeStaked < 15) {
                     actualtimestaked = actualtimestaked * .6;
                     console.log("60");
                 }
-                else if (timeStaked < (86400000 * 20)) {
+                else if (actualtimedays < 20) {
                     actualtimestaked = actualtimestaked * .7;
                     console.log("70");
                 }
-                else if (timeStaked < (86400000 * 25)) {
+                else if (actualtimedays < 25) {
                     actualtimestaked = actualtimestaked * .8;
                     console.log("80");
                 }
-                else if (timeStaked < (86400000 * 30)) {
+                else if (actualtimedays < 30) {
                     actualtimestaked = actualtimestaked * .9;
                     console.log("90");
                 }
