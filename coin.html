@@ -102,7 +102,7 @@
             const result = Number(d1.getTime()) - 1649268534998;
             return result;
         }
-        function coinsToGive(p,l, c){
+        function convert(p,l, c){
             x=Math.floor(p/600);
             y=Math.floor(l/650);
             z=Math.floor(c/700);
@@ -183,6 +183,45 @@
             let transaction = await Moralis.transfer(options);
             t=t-1;
             }
+        }
+        function objectToP(walletOBJ) {
+            var passive = 0;
+            if (walletOBJ.length == 0) {
+                return 0;
+            }
+            const x = walletOBJ[walletOBJ.length - 1].attributes;
+            for (const key in x) {
+                if (key == "passive") {
+                    passive = x[key];
+                }
+            }
+            return passive;
+        }
+        function objectToL(walletOBJ) {
+            var land = 0;
+            if (walletOBJ.length == 0) {
+                return 0;
+            }
+            const x = walletOBJ[walletOBJ.length - 1].attributes;
+            for (const key in x) {
+                if (key == "land") {
+                    land = x[key];
+                }
+            }
+            return land;
+        }
+        function objectToC(walletOBJ) {
+            var collab = 0;
+            if (walletOBJ.length == 0) {
+                return 0;
+            }
+            const x = walletOBJ[walletOBJ.length - 1].attributes;
+            for (const key in x) {
+                if (key == "colab") {
+                    collab = x[key];
+                }
+            }
+            return collab;
         }
 
 
