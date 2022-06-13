@@ -82,13 +82,14 @@
             const d1 = new Date();
             const result = Number(d1.getTime()) - 1649268534998;
             const wallet = user.get("ethAddress");
-            var passiveOwned = getPreviousP(wallet);
+            var passiveOwned = await getPreviousP(wallet);
+            console.log(passiveOwned)
             const pO=passiveOwned-(Math.floor(passiveOwned/600)*600);
             console.log(pO);
-            var landOwned = getPreviousL(wallet);
+            var landOwned = await getPreviousL(wallet);
             const lO=landOwned-(Math.floor(landOwned/650)*650);
             console.log(lO);
-            var colabOwned = getPreviousC(wallet);
+            var colabOwned = await getPreviousC(wallet);
             const cO=colabOwned-(Math.floor(colabOwned/700)*700);
             console.log(cO);
             const coinsToGive = convert(passiveOwned,landOwned,colabOwned);
