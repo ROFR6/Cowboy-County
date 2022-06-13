@@ -40,6 +40,20 @@
         <h3>Coin Collecting</h3>
         <img src="./images/Web_BG.png" height="100%">
         <div class="space"></div>
+        <h5>Howdy! In order to claim your gold NFT follow these directions:</h5>
+        <h5>1. Click the initialize button</h5>
+        <h5>2. Click the Sign into Metamask button</h5>
+        <h5>3. Sign the message on the Metamask popup</h5>
+        <h5>4. Press Claim</h5>
+        <div class="container">
+            <div class="row">
+                <button id="btn-logout" class="button1">Intialize</button>
+                <button id="btn-login" class="button1">Sign into Metamask</button>
+            </div>
+            <div class="row">
+                <button id="btn-gold" class="button2">Claim</button>
+            </div>
+        </div>
         
     </center>
     <script>
@@ -68,15 +82,15 @@
             const d1 = new Date();
             const result = Number(d1.getTime()) - 1649268534998;
             var passiveOwned = getPreviousP(wallet);
-            const pO=passiveOwned-(Math.floor(passiveOwned/3000)*3000);
+            const pO=passiveOwned-(Math.floor(passiveOwned/600)*600);
             var landOwned = getPreviousL(wallet);
-            const lO=landOwned-(Math.floor(landOwned/6000)*6000);
+            const lO=landOwned-(Math.floor(landOwned/650)*650);
             var colabOwned = getPreviousC(wallet);
-            const cO=colabOwned-(Math.floor(colabOwned/6000)*6000);
+            const cO=colabOwned-(Math.floor(colabOwned/700)*700);
             const coinsToGive = convert(passiveOwned,landOwned,colabOwned);
             subtractFromServer(pO,cO,lO,wallet);
             addToServer(coinsToGive,wallet);
-            mint(coinsToGive,wallet);//
+            mint(coinsToGive,wallet);
         }
         function getTime() {
             const d1 = new Date();
@@ -84,9 +98,9 @@
             return result;
         }
         function coinsToGive(p,l, c){
-            x=Math.floor(p/3000);
-            y=Math.floor(l/6000);
-            z=Math.floor(c/9000);
+            x=Math.floor(p/600);
+            y=Math.floor(l/650);
+            z=Math.floor(c/700);
             t=x+y+z;
             return t;
         }
@@ -104,10 +118,14 @@
             coinq = new Moralis.Query(coins);
             coinq.equalTo("wallet", wallet);
             coinOBJ = await coinq.find();
-            previousCoins = objectToCoins(coinOBJ);//
+            previousCoins = objectToCoins(coinOBJ);
             const sum = x+previousCoins;
-            w.set("wallet", wallet);
-            w.set("coins", sum);
+            var t = x;
+            while (t>0){
+                coin.set("wallet", wallet);
+                coin.set("coins", sum-t+1);
+                coin.save();
+            }
         }
 
         function objectToCoins(coinOBJ) {
@@ -148,9 +166,24 @@
             const previousP = objectToP(walletOBJ);
             return previousP;
         }
+        async function mint(x, wallet){
+            const coins = Moralis.Object.extend("coins");
+            coinq = new Moralis.Query(coins);
+            coinq.greaterThan("coins", -1);
+            const count = await coinq.count();
+            const safeNum= count+1
+            var t=x;
+            while(t>0){
+            const options = {type: "erc721",receiver: wallet,contractAddress: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",tokenId: safeNum+t,};
+            let transaction = await Moralis.transfer(options);
+            t=t-1;
+            }
+        }
+
 
         document.getElementById("btn-login").onclick = login;
         document.getElementById("btn-logout").onclick = logOut;
+        document.getElementById("btn-gold").addEventListener("click", howMuch);
     </script>
 </body>
 
