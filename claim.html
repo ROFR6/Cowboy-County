@@ -210,26 +210,16 @@
             if (timeStaked < (1953542493)) {
                 actualtimedays = actualtimedays + 14;
             }
-            if (actualtimedays < 30) {
-                if (actualtimedays < 5) {
-                    actualtimedays = actualtimedays * .4;
+            if (actualtimedays < 180) {
+                if (actualtimedays < 30) {
+                    actualtimedays = actualtimedays * .65;
                 }
-                else if (actualtimedays < 10) {
-                    actualtimedays = actualtimedays * .5;
+                else if (actualtimedays < 90) {
+                    actualtimedays = actualtimedays * .75;
                 }
-                else if (timeStaked < 15) {
-                    actualtimedays = actualtimedays * .6;
+                else if (timeStaked < 180) {
+                    actualtimedays = actualtimedays * .90;
                 }
-                else if (actualtimedays < 20) {
-                    actualtimedays = actualtimedays * .7;
-                }
-                else if (actualtimedays < 25) {
-                    actualtimedays = actualtimedays * .8;
-                }
-                else if (actualtimedays < 30) {
-                    actualtimedays = actualtimedays * .9;
-                }
-
             }
             const goldMade = 10 * actualtimedays;
             const goldMadeFloor = Math.floor(goldMade);
