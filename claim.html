@@ -157,6 +157,7 @@
             var actualtimestaked = result - timeStaked;
             if (timeStaked < (1953542493)) {
                 actualtimestaked = actualtimestaked + (86400000 * 14);
+                console.log("bonus granted");
             }
             if (timeStaked < (86400000 * 30)) {
                 if (timeStaked < (86400000 * 5)) {
