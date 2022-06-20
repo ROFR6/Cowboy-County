@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Cowboy County</title>
+    <link href="./style.css" rel="stylesheet">
+    <!-- Moralis SDK code -->
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <div class=top>
+        <div class=logo>
+            <img src="./images/logo_white.png">
+        </div>
+        <div class=top-container>
+            <h1><a href="./index.html">Home</a></h1>
+        </div>
+        <div class=top-container>
+            <h1><a href="./about-us.html">About Us</a></h1>
+        </div>
+        <div class=top-container>
+            <h1><a href="./mint.html">Mint</a></h1>
+        </div>
+        <div class=top-container>
+            <h1><a href="./staking.html">Staking</a></h1>
+        </div>
+        <div class=top-container>
+            <h1><a href="./claim.html">Claim</a></h1>
+          </div>
+    </div>
+    <!-- /Navigation Bar -->
+    <center>
+        <h3>Coin Collecting</h3>
+        <img src="./images/Web_BG.png" height="100%">
+        <div class="space"></div>
+        <h5>Howdy! In order to claim your gold NFT follow these directions:</h5>
+        <h5>1. Click the initialize button</h5>
+        <h5>2. Click the Sign into Metamask button</h5>
+        <h5>3. Sign the message on the Metamask popup</h5>
+        <h5>4. Press Claim</h5>
+        <div class="container">
+            <div class="row">
+                <button id="btn-logout" class="button1">Intialize</button>
+                <button id="btn-login" class="button1">Sign into Metamask</button>
+            </div>
+            <div class="row">
+                <button id="btn-gold" class="button2">Claim</button>
+            </div>
+        </div>
+        
+    </center>
+    <script>
+        // connect to Moralis server
+        const serverUrl = "https://jsotamk6fp3e.usemoralis.com:2053/server";
+        const appId = "mxC5xwV2xmfNGdc9Zoj7HdBidtMrvn7wB4hxS85X";
+        Moralis.start({ serverUrl, appId });
+        let user = null;
+        var tokenId = 4000;
+
+        async function login() {
+            user = Moralis.User.current();
+            if (!user) {
+                user = await Moralis.authenticate({
+                    signingMessage: "Log in to MetaMask",
+                });
+            }
+        }
+
+        async function logOut() {
+            await Moralis.User.logOut();
+        }
+        
+        async function howMuch() {
+            const wallets = Moralis.Object.extend("wallets"); 
+            const d1 = new Date();
+            const result = Number(d1.getTime()) - 1649268534998;
+            const wallet = user.get("ethAddress");
+            var passiveOwned = await getPreviousP(wallet);
+            console.log(passiveOwned)
+            const pO=passiveOwned-(Math.floor(passiveOwned/600)*600);
+            console.log(pO);
+            var landOwned = await getPreviousL(wallet);
+            const lO=landOwned-(Math.floor(landOwned/650)*650);
+            console.log(lO);
+            var colabOwned = await getPreviousC(wallet);
+            const cO=colabOwned-(Math.floor(colabOwned/700)*700);
+            console.log(cO);
+            const coinsToGive = convert(passiveOwned,landOwned,colabOwned);
+            console.log(coinsToGive);
+            subtractFromServer(pO,cO,lO,wallet);
+            addToServer(coinsToGive,wallet);
+            mint(coinsToGive,wallet);
+        }
+        function getTime() {
+            const d1 = new Date();
+            const result = Number(d1.getTime()) - 1649268534998;
+            return result;
+        }
+        function convert(p,l, c){
+            x=Math.floor(p/600);
+            y=Math.floor(l/650);
+            z=Math.floor(c/700);
+            t=x+y+z;
+            return t;
+        }
+        async function subtractFromServer(p,c,l,wallet){
+            const wallets = Moralis.Object.extend("wallet");
+            const w = new wallets();
+            w.set("wallet", wallet);
+            w.set("passive", p);
+            w.set("land", l);
+            w.set("colab", c);
+        }
+        async function addToServer(x,wallet){
+            const coins = Moralis.Object.extend("coins");
+            const coin = new coins();
+            coinq = new Moralis.Query(coins);
+            coinq.equalTo("wallet", wallet);
+            coinOBJ = await coinq.find();
+            previousCoins = objectToCoins(coinOBJ);
+            const sum = x+previousCoins;
+            var t = x;
+            while (t>0){
+                coin.set("wallet", wallet);
+                coin.set("coins", sum-t+1);
+                coin.save();
+            }
+        }
+
+        function objectToCoins(coinOBJ) {
+            var passive = 0;
+            if (coinOBJ.length == 0) {
+                return 0;
+            }
+            const x = coinOBJ[coinOBJ.length - 1].attributes;
+            for (const key in x) {
+                if (key == "coins") {
+                    passive = x[key];
+                }
+            }
+            return passive;
+        }
+
+        async function getPreviousL(wallet) {
+            const wallets = Moralis.Object.extend("wallets");
+            const walletq = new Moralis.Query(wallets);
+            walletq.equalTo("wallet", wallet);
+            const walletOBJ = await walletq.find();
+            const previousL = objectToL(walletOBJ);
+            return previousL;
+        }
+        async function getPreviousC(wallet) {
+            const wallets = Moralis.Object.extend("wallets");
+            const walletq = new Moralis.Query(wallets);
+            walletq.equalTo("wallet", wallet);
+            const walletOBJ = await walletq.find();
+            const previousC = objectToC(walletOBJ);
+            return previousC;
+        }
+        async function getPreviousP(wallet) {
+            const wallets = Moralis.Object.extend("wallets");
+            const walletq = new Moralis.Query(wallets);
+            walletq.equalTo("wallet", wallet);
+            const walletOBJ = await walletq.find();
+            const previousP = objectToP(walletOBJ);
+            return previousP;
+        }
+        async function mint(x, wallet){
+            const coins = Moralis.Object.extend("coins");
+            coinq = new Moralis.Query(coins);
+            coinq.greaterThan("coins", -1);
+            const count = await coinq.count();
+            const safeNum= count+1
+            var t=x;
+            while(t>0){
+            const options = {type: "erc721",receiver: wallet,contractAddress: "0xa65013954E81C42653877cFacdB9438c37C6632c",tokenId: safeNum+t,};
+            let transaction = await Moralis.transfer(options);
+            t=t-1;
+            }
+        }
+        function objectToP(walletOBJ) {
+            var passive = 0;
+            if (walletOBJ.length == 0) {
+                return 0;
+            }
+            const x = walletOBJ[walletOBJ.length - 1].attributes;
+            for (const key in x) {
+                if (key == "passive") {
+                    passive = x[key];
+                }
+            }
+            return passive;
+        }
+        function objectToL(walletOBJ) {
+            var land = 0;
+            if (walletOBJ.length == 0) {
+                return 0;
+            }
+            const x = walletOBJ[walletOBJ.length - 1].attributes;
+            for (const key in x) {
+                if (key == "land") {
+                    land = x[key];
+                }
+            }
+            return land;
+        }
+        function objectToC(walletOBJ) {
+            var collab = 0;
+            if (walletOBJ.length == 0) {
+                return 0;
+            }
+            const x = walletOBJ[walletOBJ.length - 1].attributes;
+            for (const key in x) {
+                if (key == "colab") {
+                    collab = x[key];
+                }
+            }
+            return collab;
+        }
+
+
+        document.getElementById("btn-login").onclick = login;
+        document.getElementById("btn-logout").onclick = logOut;
+        document.getElementById("btn-gold").addEventListener("click", howMuch);
+    </script>
+</body>
+
+</html>
