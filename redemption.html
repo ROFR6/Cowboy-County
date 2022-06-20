@@ -122,9 +122,9 @@
         async function addToServer(x,wallet){
             const coins = Moralis.Object.extend("coins");
             const coin = new coins();
-            coinq = new Moralis.Query(coins);
+            const coinq = new Moralis.Query(coins);
             coinq.equalTo("wallet", wallet);
-            coinOBJ = await coinq.find();
+            const coinOBJ = await coinq.count();
             previousCoins = objectToCoins(coinOBJ);
             console.log(previousCoins);
             const sum = x+previousCoins;
