@@ -193,13 +193,13 @@
         async function howMuch() {
             const vaultStaked = await getVault();//gets the vault of the token that was staked
             var vault="";
-            if (vaultStaked=1){
+            if (vaultStaked==1){
                 vault = "Passive";
             }
-            if (vaultStaked=2){
+            if (vaultStaked==2){
                 vault = "Land";
             }
-            if (vaultStaked=3){
+            if (vaultStaked==3){
                 vault = "Collab";
             }
             const tokens = Moralis.Object.extend("tokens");
