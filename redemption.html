@@ -176,8 +176,11 @@
         async function mint(x, wallet){
             console.log("in mint");
             const coins = Moralis.Object.extend("coins");
+            console.log(179);
             coinq = new Moralis.Query(coins);
+            console.log(181);
             coinq.greaterThan("coins", -1);
+            console.log(183);
             const count = await coinq.count();
             console.log(count);
             const safeNum= count+1;
