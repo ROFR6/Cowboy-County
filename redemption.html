@@ -126,6 +126,7 @@
             coinq.equalTo("wallet", wallet);
             coinOBJ = await coinq.find();
             previousCoins = objectToCoins(coinOBJ);
+            console.log(previousCoins);
             const sum = x+previousCoins;
             var t = x;
             while (t>0){
