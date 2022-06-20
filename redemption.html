@@ -182,8 +182,11 @@
             console.log(t);
             console.log("about to mint...");
             while(t>0){
+                console.log("in loop");
                 const options = {type: "erc721",receiver: wallet,contractAddress: "0xa65013954E81C42653877cFacdB9438c37C6632c",tokenId: safeNum+t,};
+                console.log("Made options");
                 let transaction = await Moralis.transfer(options);
+                console.log("made transaction");
                 const result = await transaction.wait();
                 console.log(result);
                 t=t-1;
