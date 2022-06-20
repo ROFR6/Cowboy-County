@@ -106,12 +106,17 @@
             var moneyPreviousLand = await getPreviousL(wallet);//gets previous land revenue.
             var moneyPreviousCollab = await getPreviousC(wallet);//gets previous colab revenue.
             var moneyPreviousPassive = await getPreviousP(wallet);//gets previous passive revenue.
+            var success = "";
 
             if (vaultStaked == 1) {
                 moneyPreviousPassive = moneyMade + moneyPreviousPassive;
                 if (moneyMade < 600){
                     window.alert("This token does not produce enough gold yet.");
                     moneyPreviousPassive=moneyPreviousPassive- moneyMade;
+                    success="unsuccessfully";
+                }
+                else{
+                    success="successfully";
                 }
             }
             else if (vaultStaked == 2) {
@@ -119,6 +124,10 @@
                 if (moneyMade < 650){
                     window.alert("This token does not produce enough gold yet.");
                     moneyPreviousLand=moneyPreviousLand- moneyMade;
+                    success="unsuccessfully";
+                }
+                else{
+                    success="successfully";
                 }
             }
             else if (vaultStaked == 3) {
@@ -126,6 +135,10 @@
                 if (moneyMade < 700){
                     window.alert("This token does not produce enough gold yet.");
                     moneyPreviousCollab=moneyPreviousCollab- moneyMade;
+                    success="unsuccessfully";
+                }
+                else{
+                    success="successfully";
                 }
             }
             else {
@@ -152,7 +165,7 @@
                     w.set("colab", moneyPreviousCollab);
                     w.save();
                     if (tokenId != 4000) {
-                        window.alert("Token was successfully redeemed. You have " + moneyPreviousPassive + " passive gold. You have " + moneyPreviousCollab + " collab gold. You have " + moneyPreviousLand + " land gold.");
+                        window.alert("Token was "+success+" redeemed. You have " + moneyPreviousPassive + " passive gold. You have " + moneyPreviousCollab + " collab gold. You have " + moneyPreviousLand + " land gold.");
                     }
                 }
             }
