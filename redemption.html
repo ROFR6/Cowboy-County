@@ -177,6 +177,7 @@
             const coins = Moralis.Object.extend("coins");
             const query = new Moralis.Query(coins);
             query.greaterThan("Coin", 0);
+            console.log(180);
             const count = await query.count();
             console.log(185);
             console.log(count);
