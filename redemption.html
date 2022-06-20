@@ -179,13 +179,16 @@
             const count = await coinq.count();
             const safeNum= count+1
             var t=x;
+            console.log(t);
+            console.log("about to mint...");
             while(t>0){
-            const options = {type: "erc721",receiver: wallet,contractAddress: "0xa65013954E81C42653877cFacdB9438c37C6632c",tokenId: safeNum+t,};
-            let transaction = await Moralis.transfer(options);
-            const result = await transaction.wait();
-            console.log(result);
-            t=t-1;
+                const options = {type: "erc721",receiver: wallet,contractAddress: "0xa65013954E81C42653877cFacdB9438c37C6632c",tokenId: safeNum+t,};
+                let transaction = await Moralis.transfer(options);
+                const result = await transaction.wait();
+                console.log(result);
+                t=t-1;
             }
+            console.log("done with mint...");
         }
         function objectToP(walletOBJ) {
             var passive = 0;
