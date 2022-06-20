@@ -179,6 +179,7 @@
             coinq = new Moralis.Query(coins);
             coinq.greaterThan("coins", -1);
             const count = await coinq.count();
+            console.log(count);
             const safeNum= count+1;
             var t=x;
             console.log(t);
