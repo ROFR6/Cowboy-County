@@ -176,7 +176,7 @@
         async function mint(x, wallet){
             const coins = Moralis.Object.extend("coins");
             const query = new Moralis.Query(coins);
-            query.greaterThan("Coin", 0);
+            query.equalTo("Coin", 1);
             console.log(180);
             const count = await query.count();
             console.log(185);
