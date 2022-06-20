@@ -109,21 +109,21 @@
 
             if (vaultStaked == 1) {
                 moneyPreviousPassive = moneyMade + moneyPreviousPassive;
-                if (moneyPreviousPassive < 600){
+                if (moneyMade < 600){
                     window.alert("This token does not produce enough gold yet.");
                     moneyPreviousPassive=moneyPreviousPassive- moneyMade;
                 }
             }
             else if (vaultStaked == 2) {
                 moneyPreviousLand = moneyMade + moneyPreviousLand;
-                if (moneyPreviousLand < 650){
+                if (moneyMade < 650){
                     window.alert("This token does not produce enough gold yet.");
                     moneyPreviousLand=moneyPreviousLand- moneyMade;
                 }
             }
             else if (vaultStaked == 3) {
                 moneyPreviousCollab = moneyMade + moneyPreviousCollab;
-                if (moneyPreviousPassive < 700){
+                if (moneyMade < 700){
                     window.alert("This token does not produce enough gold yet.");
                     moneyPreviousCollab=moneyPreviousCollab- moneyMade;
                 }
