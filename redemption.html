@@ -174,6 +174,7 @@
             return previousP;
         }
         async function mint(x, wallet){
+            console.log("in mint");
             const coins = Moralis.Object.extend("coins");
             coinq = new Moralis.Query(coins);
             coinq.greaterThan("coins", -1);
