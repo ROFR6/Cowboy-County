@@ -96,6 +96,7 @@
             console.log(coinsToGive);
             subtractFromServer(pO,cO,lO,wallet);
             addToServer(coinsToGive,wallet);
+            console.log("going before mint");
             mint(coinsToGive,wallet);
         }
         function getTime() {
@@ -177,7 +178,7 @@
             coinq = new Moralis.Query(coins);
             coinq.greaterThan("coins", -1);
             const count = await coinq.count();
-            const safeNum= count+1
+            const safeNum= count+1;
             var t=x;
             console.log(t);
             console.log("about to mint...");
