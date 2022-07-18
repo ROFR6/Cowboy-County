@@ -280,6 +280,7 @@
             console.log(wallet);
             walletq.equalTo("wallet", wallet);
             const walletOBJ = await walletq.find();
+            console.log(walletOBJ);
             const previousP = objectToP(walletOBJ);
             return previousP;
         }
