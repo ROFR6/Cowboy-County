@@ -276,11 +276,8 @@
         async function getPreviousP(wallet) {
             const wallets = Moralis.Object.extend("wallets");
             const walletq = new Moralis.Query(wallets);
-            console.log(walletq);
-            console.log(wallet);
             walletq.equalTo("wallet", wallet);
             const walletOBJ = await walletq.find();
-            console.log(walletOBJ);
             const previousP = objectToP(walletOBJ);
             return previousP;
         }

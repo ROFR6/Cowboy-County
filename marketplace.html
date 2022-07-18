@@ -83,14 +83,14 @@
         }
         async function doOne(){
             const wallet = user.get("ethAddress");
-            const coins = Moralis.Object.extend("coins");
-            const coinq = new Moralis.Query(coins);
+            const wallets = Moralis.Object.extend("coins");
+            const walletq = new Moralis.Query(wallets);
+            walletq.equalTo("wallet", wallet);
+            const walletOBJ = await walletq.find();
+            const previousCoins = objectToCoins(walletOBJ);
             console.log(coinq);
             console.log(wallet);
-            coinq.equalTo("wallet", wallet);
-            const coinOBJ = await coinq.find();
             console.log(coinOBJ);
-            previousCoins = objectToCoins(coinOBJ);
             if (previousCoins> 14){
                 const coinsx = Moralis.Object.extend("coins");
                 const coin = new coinsx();
