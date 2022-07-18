@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Cowboy County</title>
+    <link href="./style.css" rel="stylesheet">
+    <!-- Moralis SDK code -->
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <div class=top>
+        <div class=logo>
+            <img src="./images/logo_white.png">
+        </div>
+        <div class=top-container>
+            <h1><a href="./index.html">Home</a></h1>
+        </div>
+        <div class=top-container>
+            <h1><a href="./about-us.html">About Us</a></h1>
+        </div>
+        <div class=top-container>
+            <h1><a href="./mint.html">Mint</a></h1>
+        </div>
+        <div class=top-container>
+            <h1><a href="./staking.html">Staking</a></h1>
+        </div>
+        <div class=top-container>
+            <h1><a href="./claim.html">Claim</a></h1>
+          </div>
+    </div>
+    <!-- /Navigation Bar -->
+    <center>
+        <h3>Coin Collecting</h3>
+        <img src="./images/Web_BG.png" height="100%">
+        <div class="space"></div>
+        <h5>Press Initialize then login to Metamask</h5>
+        <h5>Then Select which one you would like to claim</h5>
+        <h5>Make sure to confirm</h5>
+        <div class="container">
+            <div class="row">
+                <button id="btn-logout" class="button1">Intialize</button>
+                <button id="btn-login" class="button1">Sign into Metamask</button>
+            </div>
+            <div class="row">
+                <button id="btn-1" class="button2">Buterin Genesis</button>
+                <button id="btn-2" class="button2">Mystery Box</button>
+                <button id="btn-3" class="button2">Discord Game Night</button>
+            </div>
+            <div class="row"></div>
+                <button id="btn-4" class="button2">Raffle</button>
+                <button id="btn-5" class="button2">Discounted Mint</button>
+                <button id="btn-6" class="button2">Zed Tourney Entry</button>
+            </div>
+        </div>
+        
+    </center>
+    <script>
+        // connect to Moralis server
+        const serverUrl = "https://jsotamk6fp3e.usemoralis.com:2053/server";
+        const appId = "mxC5xwV2xmfNGdc9Zoj7HdBidtMrvn7wB4hxS85X";
+        Moralis.start({ serverUrl, appId });
+        let user = null;
+        var tokenId = 4000;
+
+        async function login() {
+            user = Moralis.User.current();
+            if (!user) {
+                user = await Moralis.authenticate({
+                    signingMessage: "Log in to MetaMask",
+                });
+            }
+        }
+
+        async function logOut() {
+            await Moralis.User.logOut();
+        }
+        async function doOne(wallet){
+            const coins = Moralis.Object.extend("coins");
+            const coinq = new Moralis.Query(coins);
+            coinq.equalTo("wallet", wallet);
+            const coinOBJ = await coinq.find();
+            previousCoins = objectToCoins(coinOBJ);
+            if (previousCoins> 14){
+                const coinsx = Moralis.Object.extend("coins");
+                const coin = new coinsx();
+                coin.set("wallet", wallet);
+                coin.set("Coin", previousCoins-15);
+                coin.save();
+                const prizes = Moralis.Object.extend("prizes");
+                const prize = new prizes();
+                prize.set("wallet", wallet);
+                prize.set("prize", 1);
+                prize.save();
+                window.alert("You have successfully redeemed a Buterin Genesis.");
+            }
+            else{
+                window.alert("Redemption unseccessfully");
+            }
+        }
+        async function doTwo(wallet){
+            const coins = Moralis.Object.extend("coins");
+            const coinq = new Moralis.Query(coins);
+            coinq.equalTo("wallet", wallet);
+            const coinOBJ = await coinq.find();
+            previousCoins = objectToCoins(coinOBJ);
+            if (previousCoins> 4){
+                const coinsx = Moralis.Object.extend("coins");
+                const coin = new coinsx();
+                coin.set("wallet", wallet);
+                coin.set("Coin", previousCoins-4);
+                coin.save();
+                const prizes = Moralis.Object.extend("prizes");
+                const prize = new prizes();
+                prize.set("wallet", wallet);
+                prize.set("prize", 2);
+                prize.save();
+                window.alert("You have successfully redeemed a mystery box.");
+            }
+            else{
+                window.alert("Redemption unseccessfully");
+            }
+        }
+        async function doThree(wallet){
+            const coins = Moralis.Object.extend("coins");
+            const coinq = new Moralis.Query(coins);
+            coinq.equalTo("wallet", wallet);
+            const coinOBJ = await coinq.find();
+            previousCoins = objectToCoins(coinOBJ);
+            if (previousCoins> 0){
+                const coinsx = Moralis.Object.extend("coins");
+                const coin = new coinsx();
+                coin.set("wallet", wallet);
+                coin.set("Coin", previousCoins-1);
+                coin.save();
+                const prizes = Moralis.Object.extend("prizes");
+                const prize = new prizes();
+                prize.set("wallet", wallet);
+                prize.set("prize", 3);
+                prize.save();
+                window.alert("You have successfully redeemed a discord game night.");
+            }
+            else{
+                window.alert("Redemption unseccessfully");
+            }
+        }
+        async function doFour(wallet){
+            const coins = Moralis.Object.extend("coins");
+            const coinq = new Moralis.Query(coins);
+            coinq.equalTo("wallet", wallet);
+            const coinOBJ = await coinq.find();
+            previousCoins = objectToCoins(coinOBJ);
+            if (previousCoins> 0){
+                const coinsx = Moralis.Object.extend("coins");
+                const coin = new coinsx();
+                coin.set("wallet", wallet);
+                coin.set("Coin", previousCoins-1);
+                coin.save();
+                const prizes = Moralis.Object.extend("prizes");
+                const prize = new prizes();
+                prize.set("wallet", wallet);
+                prize.set("prize", 4);
+                prize.save();
+                window.alert("You have successfully redeemed a raffle entry.");
+            }
+            else{
+                window.alert("Redemption unseccessfully");
+            }
+        }
+        async function doFive(wallet){
+            const coins = Moralis.Object.extend("coins");
+            const coinq = new Moralis.Query(coins);
+            coinq.equalTo("wallet", wallet);
+            const coinOBJ = await coinq.find();
+            previousCoins = objectToCoins(coinOBJ);
+            if (previousCoins> 0){
+                const coinsx = Moralis.Object.extend("coins");
+                const coin = new coinsx();
+                coin.set("wallet", wallet);
+                coin.set("Coin", previousCoins-1);
+                coin.save();
+                const prizes = Moralis.Object.extend("prizes");
+                const prize = new prizes();
+                prize.set("wallet", wallet);
+                prize.set("prize", 5);
+                prize.save();
+                window.alert("You have successfully redeemed a discounted mint.");
+            }
+            else{
+                window.alert("Redemption unseccessfully");
+            }
+        }
+        async function doSix(wallet){
+            const coins = Moralis.Object.extend("coins");
+            const coinq = new Moralis.Query(coins);
+            coinq.equalTo("wallet", wallet);
+            const coinOBJ = await coinq.find();
+            previousCoins = objectToCoins(coinOBJ);
+            if (previousCoins> 0){
+                const coinsx = Moralis.Object.extend("coins");
+                const coin = new coinsx();
+                coin.set("wallet", wallet);
+                coin.set("Coin", previousCoins-1);
+                coin.save();
+                const prizes = Moralis.Object.extend("prizes");
+                const prize = new prizes();
+                prize.set("wallet", wallet);
+                prize.set("prize", 6);
+                prize.save();
+                window.alert("You have successfully redeemed a Zed tournament entry.");
+            }
+            else{
+                window.alert("Redemption unseccessfully");
+            }
+        }
+
+        function objectToCoins(coinOBJ) {
+            var passive = 0;
+            if (coinOBJ.length == 0) {
+                return 0;
+            }
+            const x = coinOBJ[coinOBJ.length - 1].attributes;
+            for (const key in x) {
+                if (key == "Coin") {
+                    passive = x[key];
+                }
+            }
+            return passive;
+        }
+
+
+        document.getElementById("btn-login").onclick = login;
+        document.getElementById("btn-logout").onclick = logOut;
+        document.getElementById("btn-1").addEventListener("click", doOne);
+        document.getElementById("btn-2").addEventListener("click", doOTwo);
+        document.getElementById("btn-3").addEventListener("click", doThree);
+        document.getElementById("btn-4").addEventListener("click", doFour);
+        document.getElementById("btn-5").addEventListener("click", doFive);
+        document.getElementById("btn-6").addEventListener("click", doSix);
+    </script>
+</body>
+
+</html>
