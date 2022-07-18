@@ -87,6 +87,7 @@
             console.log("maybe");
             coinq.equalTo("wallet", wallet);
             const coinOBJ = await coinq.find();
+            console.log("qyery");
             previousCoins = objectToCoins(coinOBJ);
             console.log(previousCoins);
             console.log(wallet);
