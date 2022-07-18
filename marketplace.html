@@ -85,6 +85,7 @@
             const wallet = user.get("ethAddress");
             const coins = Moralis.Object.extend("coins");
             const coinq = new Moralis.Query(coins);
+            console.log(coinq);
             coinq.equalTo("wallet", wallet);
             const coinOBJ = await coinq.find();
             console.log(coinOBJ);
