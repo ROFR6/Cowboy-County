@@ -81,7 +81,8 @@
         async function logOut() {
             await Moralis.User.logOut();
         }
-        async function doOne(wallet){
+        async function doOne(){
+            const wallet = user.get("ethAddress");
             const coins = Moralis.Object.extend("coins");
             const coinq = new Moralis.Query(coins);
             console.log(wallet);
@@ -105,7 +106,8 @@
                 window.alert("Redemption unseccessfully");
             }
         }
-        async function doTwo(wallet){
+        async function doTwo(){
+            const wallet = user.get("ethAddress");
             const coins = Moralis.Object.extend("coins");
             const coinq = new Moralis.Query(coins);
             coinq.equalTo("wallet", wallet);
@@ -128,7 +130,8 @@
                 window.alert("Redemption unseccessfully");
             }
         }
-        async function doThree(wallet){
+        async function doThree(){
+            const wallet = user.get("ethAddress");
             const coins = Moralis.Object.extend("coins");
             const coinq = new Moralis.Query(coins);
             coinq.equalTo("wallet", wallet);
@@ -151,7 +154,8 @@
                 window.alert("Redemption unseccessfully");
             }
         }
-        async function doFour(wallet){
+        async function doFour(){
+            const wallet = user.get("ethAddress");
             const coins = Moralis.Object.extend("coins");
             const coinq = new Moralis.Query(coins);
             coinq.equalTo("wallet", wallet);
@@ -174,7 +178,8 @@
                 window.alert("Redemption unseccessfully");
             }
         }
-        async function doFive(wallet){
+        async function doFive(){
+            const wallet = user.get("ethAddress");
             const coins = Moralis.Object.extend("coins");
             const coinq = new Moralis.Query(coins);
             coinq.equalTo("wallet", wallet);
@@ -197,7 +202,8 @@
                 window.alert("Redemption unseccessfully");
             }
         }
-        async function doSix(wallet){
+        async function doSix(){
+            const wallet = user.get("ethAddress");
             const coins = Moralis.Object.extend("coins");
             const coinq = new Moralis.Query(coins);
             coinq.equalTo("wallet", wallet);
