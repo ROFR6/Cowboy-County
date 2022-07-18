@@ -260,7 +260,6 @@
         async function getPreviousL(wallet) {
             const wallets = Moralis.Object.extend("wallets");
             const walletq = new Moralis.Query(wallets);
-            console.log(walletq);
             walletq.equalTo("wallet", wallet);
             const walletOBJ = await walletq.find();
             const previousL = objectToL(walletOBJ);
