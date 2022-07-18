@@ -88,7 +88,7 @@
             walletq.equalTo("wallet", wallet);
             const walletOBJ = await walletq.find();
             const previousCoins = objectToCoins(walletOBJ);
-            console.log(coinq);
+            console.log(walletq);
             console.log(wallet);
             console.log(coinOBJ);
             if (previousCoins> 14){
