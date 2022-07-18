@@ -85,11 +85,10 @@
             const wallet = user.get("ethAddress");
             const coins = Moralis.Object.extend("coins");
             const coinq = new Moralis.Query(coins);
-            console.log(wallet);
             coinq.equalTo("wallet", wallet);
             const coinOBJ = await coinq.find();
+            console.log(coinOBJ);
             previousCoins = objectToCoins(coinOBJ);
-            console.log(previousCoins);
             if (previousCoins> 14){
                 const coinsx = Moralis.Object.extend("coins");
                 const coin = new coinsx();
