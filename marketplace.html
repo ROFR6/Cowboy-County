@@ -84,6 +84,7 @@
         async function doOne(wallet){
             const coins = Moralis.Object.extend("coins");
             const coinq = new Moralis.Query(coins);
+            console.log("maybe");
             coinq.equalTo("wallet", wallet);
             const coinOBJ = await coinq.find();
             previousCoins = objectToCoins(coinOBJ);
