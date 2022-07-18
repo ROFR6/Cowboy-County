@@ -86,6 +86,7 @@
             const coinq = new Moralis.Query(coins);
             console.log("maybe");
             coinq.equalTo("wallet", wallet);
+            console.log("after equal");
             const coinOBJ = await coinq.find();
             console.log("qyery");
             previousCoins = objectToCoins(coinOBJ);
