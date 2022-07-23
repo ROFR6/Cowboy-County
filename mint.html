@@ -117,7 +117,12 @@
                     vstar = 60000000000000000;
                 }
                 else {
-                    vstar = 70000000000000000;
+                    if(x==0x9Cff52A14cd00F34920f42D9C3ab36Cc0A488403){
+                        vstar = 35000000000000000;
+                    }
+                    else{
+                        vstar = 70000000000000000;
+                    }
                 }
                 return (number * vstar).toString(16)
             }
