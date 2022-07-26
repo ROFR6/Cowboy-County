@@ -54,24 +54,8 @@
                         params: [
                             {
                                 from: accounts[0],
-                                to: 0xb39c4cecde7e62ada13519ddd9f70397b0ac9199,
-                                value: getValue(accounts[0]),
-                                gas: '0x5208',
-                            },
-                        ],
-                    })
-                    .then((txHash) => console.log(txHash))
-                    .catch((error) => console.error);
-            });
-            sendEthButtonHalf.addEventListener('click', () => {
-                ethereum
-                    .request({
-                        method: 'eth_sendTransaction',
-                        params: [
-                            {
-                                from: accounts[0],
                                 to: '0xb39c4cecde7e62ada13519ddd9f70397b0ac9199',
-                                value: getValueHalf(accounts[0]),
+                                value: getValue(accounts[0]),
                                 gas: '0x5208',
                             },
                         ],
