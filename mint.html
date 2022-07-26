@@ -110,25 +110,6 @@
                 }
                 return (number * vstar).toString(16)
             }
-            function getValueHalf(x) {
-                const whitelisted = new Set();
-                whitelisted.add(0xA817a16412752DA62beA01A450B974e429B3008d);
-                whitelisted.add(0xD9Ba2F9e4F3b87ab77e00563bdB6917426ee6657);
-                console.log(x);
-                console.log(whitelisted);
-                
-                if (whitelisted.has(x)) {
-                    vstar = 35000000000000000;
-                    whitelisted.delete(x);
-                }
-                else {
-                    vstar = 70000000000000000;
-                }
-                if(number>1){
-                    return ((number-1)*70000000000000000+vstar).toString(16);
-                }
-                return (number * vstar).toString(16);
-            }
         }
 
 
