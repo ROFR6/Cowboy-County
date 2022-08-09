@@ -249,6 +249,61 @@
             const goldMadeFloor = Math.floor(goldMade);
             window.alert("This token would give " + goldMadeFloor + " " + vault +" $Gold.");
         }
+        
+        async function howMuchWallet() {
+            const vaultStaked = await getVault();//gets the vault of the token that was staked
+            var vault="";
+            if (vaultStaked==1){
+                vault = "Passive";
+            }
+            if (vaultStaked==2){
+                vault = "Land";
+            }
+            if (vaultStaked==3){
+                vault = "Collab";
+            }
+            const tokens = Moralis.Object.extend("tokens");
+            const d1 = new Date();
+            const result = Number(d1.getTime()) - 1649268534998;
+            const tokenIdhm = window.prompt("Enter the token Id of the token you would like to check.");
+            const tokenIdhmList = findTokensOfWallet();
+            const tokenq = new Moralis.Query(tokens);
+            console.log(tokenq);
+            var sum=0;
+            for(let i=0;i<tokenIdhmList.length,i++){
+                tokenIdhm=tokenIdhmList[i];
+                tokenq.equalTo("tokenId", Number(tokenIdhm));
+                const timeStakedOBJ = await tokenq.find();
+                var timeStaked = objectToTime(timeStakedOBJ);
+                if (timeStaked == 0) {
+                    sum=sum+0;
+                }
+                var actualtimestaked = result - timeStaked;
+                var actualtimedays = actualtimestaked / 86400000;
+                if (timeStaked < (1953542493)) {
+                    actualtimedays = actualtimedays + 14;
+                }
+                if (actualtimedays < 180) {
+                    if (actualtimedays < 30) {
+                        actualtimedays = actualtimedays * .65;
+                    }
+                    else if (actualtimedays < 90) {
+                        actualtimedays = actualtimedays * .75;
+                    }
+                    else if (timeStaked < 180) {
+                        actualtimedays = actualtimedays * .90;
+                    }
+                }
+                const goldMade = 10 * actualtimedays;
+                const goldMadeFloor = Math.floor(goldMade);
+                sum=sum+goldMadeFloor;
+            }
+            window.alert("You would get around " + goldMadeFloor/650 + " $Gold.");
+        }
+        async function findTokensOfWallet(){
+            
+        }
+
         async function getVault() {
             const tokens = Moralis.Object.extend("tokens");
             const tokenq = new Moralis.Query(tokens);
