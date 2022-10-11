@@ -270,7 +270,7 @@
             const tokenq = new Moralis.Query(tokens);
             console.log(tokenq);
             var sum=0;
-            for(let i=0;i<tokenIdhmList.length,i++){
+            for(let i=0;i<tokenIdhmList.length;i++){
                 tokenIdhm=tokenIdhmList[i];
                 tokenq.equalTo("tokenId", Number(tokenIdhm));
                 const timeStakedOBJ = await tokenq.find();
