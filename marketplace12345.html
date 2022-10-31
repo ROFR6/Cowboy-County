@@ -46,14 +46,18 @@
                 <button id="btn-login" class="button1">Sign into Metamask</button>
             </div>
             <div class="row">
-                <button id="btn-1" class="button2">Buterin Genesis (15)</button>
-                <button id="btn-2" class="button2">Mystery Box (5)</button>
-                <button id="btn-3" class="button2">Discord Game Night (1)</button>
+                <button id="btn-1" class="button2">Buterin Genesis (3000)</button>
+                <button id="btn-2" class="button2">Poker Night (1000)</button>
+                <button id="btn-3" class="button2">Trivia Night (300)</button>
             </div>
             <div class="row"></div>
-                <button id="btn-4" class="button2">Horse Raffle (1)</button>
-                <button id="btn-5" class="button2">Discounted Mint (1)</button>
-                <button id="btn-6" class="button2">Zed Tourney Entry (1)</button>
+                <button id="btn-4" class="button2">Cowboy NFT (1000)</button>
+                <button id="btn-5" class="button2">Riot Racer Car (500)</button>
+                <button id="btn-6" class="button2">Trick or Treat (1500)</button>
+            </div>
+            <div class="row"></div>
+                <button id="btn-7" class="button2">Chicken Derby (750)</button>
+                <button id="btn-8" class="button2">Cowboy County Horse Stud (300)</button>
             </div>
         </div>
         
@@ -80,8 +84,8 @@
         }
         async function doOne(){
             const wallet = user.get("ethAddress");
-            const wallets = Moralis.Object.extend("coins");
-            const walletq = new Moralis.Query(wallets);
+            const walletst = Moralis.Object.extend("wallets");
+            const walletq = new Moralis.Query(walletst);
             walletq.equalTo("wallet", wallet);
             const walletOBJ = await walletq.find();
             const previousCoins = objectToCoins(walletOBJ);
@@ -89,16 +93,20 @@
             console.log(wallet);
             console.log(walletOBJ);
             console.log(previousCoins)
-            if (previousCoins> 14){
-                const coinsx = Moralis.Object.extend("coins");
-                const coin = new coinsx();
-                coin.set("wallet", wallet);
-                coin.set("Coin", previousCoins-15);
-                coin.save();
+            if (previousCoins> 3000){
+                const walletsx = Moralis.Object.extend("wallets");
+                const walletx = new walletsx();
+                walletx.set("wallet", wallet);
+                walletx.set("passive", previousCoins-3000);
+                walletx.set("land", 0);
+                walletx.set("collab", 0);
+                walletx.save();
                 const prizes = Moralis.Object.extend("prizes");
                 const prize = new prizes();
                 prize.set("wallet", wallet);
                 prize.set("prize", 1);
+                let discordID = window.prompt("Please enter your discord ID");
+                prize.set("Discord", discordID);
                 prize.save();
                 window.alert("You have successfully redeemed a Buterin Genesis.");
             }
@@ -113,18 +121,22 @@
             coinq.equalTo("wallet", wallet);
             const coinOBJ = await coinq.find();
             previousCoins = objectToCoins(coinOBJ);
-            if (previousCoins> 4){
-                const coinsx = Moralis.Object.extend("coins");
-                const coin = new coinsx();
-                coin.set("wallet", wallet);
-                coin.set("Coin", previousCoins-4);
-                coin.save();
+            if (previousCoins> 1000){
+                const walletsx = Moralis.Object.extend("wallets");
+                const walletx = new walletsx();
+                walletx.set("wallet", wallet);
+                walletx.set("passive", previousCoins-3000);
+                walletx.set("land", 0);
+                walletx.set("collab", 0);
+                walletx.save();
                 const prizes = Moralis.Object.extend("prizes");
                 const prize = new prizes();
                 prize.set("wallet", wallet);
                 prize.set("prize", 2);
+                let discordID = window.prompt("Please enter your discord ID");
+                prize.set("Discord", discordID);
                 prize.save();
-                window.alert("You have successfully redeemed a mystery box.");
+                window.alert("You have successfully redeemed a poker night.");
             }
             else{
                 window.alert("Redemption unseccessfully");
@@ -137,18 +149,22 @@
             coinq.equalTo("wallet", wallet);
             const coinOBJ = await coinq.find();
             previousCoins = objectToCoins(coinOBJ);
-            if (previousCoins> 0){
-                const coinsx = Moralis.Object.extend("coins");
-                const coin = new coinsx();
-                coin.set("wallet", wallet);
-                coin.set("Coin", previousCoins-1);
-                coin.save();
+            if (previousCoins> 300){
+                const walletsx = Moralis.Object.extend("wallets");
+                const walletx = new walletsx();
+                walletx.set("wallet", wallet);
+                walletx.set("passive", previousCoins-3000);
+                walletx.set("land", 0);
+                walletx.set("collab", 0);
+                walletx.save();
                 const prizes = Moralis.Object.extend("prizes");
                 const prize = new prizes();
                 prize.set("wallet", wallet);
                 prize.set("prize", 3);
+                let discordID = window.prompt("Please enter your discord ID");
+                prize.set("Discord", discordID);
                 prize.save();
-                window.alert("You have successfully redeemed a discord game night.");
+                window.alert("You have successfully redeemed a trivia night.");
             }
             else{
                 window.alert("Redemption unseccessfully");
@@ -161,18 +177,22 @@
             coinq.equalTo("wallet", wallet);
             const coinOBJ = await coinq.find();
             previousCoins = objectToCoins(coinOBJ);
-            if (previousCoins> 0){
-                const coinsx = Moralis.Object.extend("coins");
-                const coin = new coinsx();
-                coin.set("wallet", wallet);
-                coin.set("Coin", previousCoins-1);
-                coin.save();
+            if (previousCoins> 1000){
+                const walletsx = Moralis.Object.extend("wallets");
+                const walletx = new walletsx();
+                walletx.set("wallet", wallet);
+                walletx.set("passive", previousCoins-3000);
+                walletx.set("land", 0);
+                walletx.set("collab", 0);
+                walletx.save();
                 const prizes = Moralis.Object.extend("prizes");
                 const prize = new prizes();
                 prize.set("wallet", wallet);
                 prize.set("prize", 4);
+                let discordID = window.prompt("Please enter your discord ID");
+                prize.set("Discord", discordID);
                 prize.save();
-                window.alert("You have successfully redeemed a raffle entry.");
+                window.alert("You have successfully redeemed a Cowboy.");
             }
             else{
                 window.alert("Redemption unseccessfully");
@@ -185,18 +205,22 @@
             coinq.equalTo("wallet", wallet);
             const coinOBJ = await coinq.find();
             previousCoins = objectToCoins(coinOBJ);
-            if (previousCoins> 0){
-                const coinsx = Moralis.Object.extend("coins");
-                const coin = new coinsx();
-                coin.set("wallet", wallet);
-                coin.set("Coin", previousCoins-1);
-                coin.save();
+            if (previousCoins> 500){
+                const walletsx = Moralis.Object.extend("wallets");
+                const walletx = new walletsx();
+                walletx.set("wallet", wallet);
+                walletx.set("passive", previousCoins-3000);
+                walletx.set("land", 0);
+                walletx.set("collab", 0);
+                walletx.save();
                 const prizes = Moralis.Object.extend("prizes");
                 const prize = new prizes();
                 prize.set("wallet", wallet);
                 prize.set("prize", 5);
+                let discordID = window.prompt("Please enter your discord ID");
+                prize.set("Discord", discordID);
                 prize.save();
-                window.alert("You have successfully redeemed a discounted mint.");
+                window.alert("You have successfully redeemed a Car.");
             }
             else{
                 window.alert("Redemption unseccessfully");
@@ -209,18 +233,78 @@
             coinq.equalTo("wallet", wallet);
             const coinOBJ = await coinq.find();
             previousCoins = objectToCoins(coinOBJ);
-            if (previousCoins> 0){
-                const coinsx = Moralis.Object.extend("coins");
-                const coin = new coinsx();
-                coin.set("wallet", wallet);
-                coin.set("Coin", previousCoins-1);
-                coin.save();
+            if (previousCoins> 1500){
+                const walletsx = Moralis.Object.extend("wallets");
+                const walletx = new walletsx();
+                walletx.set("wallet", wallet);
+                walletx.set("passive", previousCoins-3000);
+                walletx.set("land", 0);
+                walletx.set("collab", 0);
+                walletx.save();
                 const prizes = Moralis.Object.extend("prizes");
                 const prize = new prizes();
                 prize.set("wallet", wallet);
                 prize.set("prize", 6);
+                let discordID = window.prompt("Please enter your discord ID");
+                prize.set("Discord", discordID);
                 prize.save();
-                window.alert("You have successfully redeemed a Zed tournament entry.");
+                window.alert("You have successfully redeemed a Mystery Box.");
+            }
+            else{
+                window.alert("Redemption unseccessfully");
+            }
+        }
+        async function doSeven(){
+            const wallet = user.get("ethAddress");
+            const coins = Moralis.Object.extend("coins");
+            const coinq = new Moralis.Query(coins);
+            coinq.equalTo("wallet", wallet);
+            const coinOBJ = await coinq.find();
+            previousCoins = objectToCoins(coinOBJ);
+            if (previousCoins> 750){
+                const walletsx = Moralis.Object.extend("wallets");
+                const walletx = new walletsx();
+                walletx.set("wallet", wallet);
+                walletx.set("passive", previousCoins-3000);
+                walletx.set("land", 0);
+                walletx.set("collab", 0);
+                walletx.save();
+                const prizes = Moralis.Object.extend("prizes");
+                const prize = new prizes();
+                prize.set("wallet", wallet);
+                prize.set("prize", 7);
+                let discordID = window.prompt("Please enter your discord ID");
+                prize.set("Discord", discordID);
+                prize.save();
+                window.alert("You have successfully redeemed a Chicken.");
+            }
+            else{
+                window.alert("Redemption unseccessfully");
+            }
+        }
+        async function doEight(){
+            const wallet = user.get("ethAddress");
+            const coins = Moralis.Object.extend("coins");
+            const coinq = new Moralis.Query(coins);
+            coinq.equalTo("wallet", wallet);
+            const coinOBJ = await coinq.find();
+            previousCoins = objectToCoins(coinOBJ);
+            if (previousCoins> 300){
+                const walletsx = Moralis.Object.extend("wallets");
+                const walletx = new walletsx();
+                walletx.set("wallet", wallet);
+                walletx.set("passive", previousCoins-3000);
+                walletx.set("land", 0);
+                walletx.set("collab", 0);
+                walletx.save();
+                const prizes = Moralis.Object.extend("prizes");
+                const prize = new prizes();
+                prize.set("wallet", wallet);
+                prize.set("prize", 8);
+                let discordID = window.prompt("Please enter your discord ID");
+                prize.set("Discord", discordID);
+                prize.save();
+                window.alert("You have successfully redeemed a Stud.");
             }
             else{
                 window.alert("Redemption unseccessfully");
@@ -229,16 +313,24 @@
 
         function objectToCoins(coinOBJ) {
             var passive = 0;
+            var land=0;
+            var colab = 0;
             if (coinOBJ.length == 0) {
                 return 0;
             }
             const x = coinOBJ[coinOBJ.length - 1].attributes;
             for (const key in x) {
-                if (key == "Coin") {
+                if (key == "passive") {
                     passive = x[key];
                 }
+                if (key == "land") {
+                    land = x[key];
+                }
+                if (key == "colab") {
+                    colab = x[key];
+                }
             }
-            return passive;
+            return passive+land+colab;
         }
 
 
